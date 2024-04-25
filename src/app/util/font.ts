@@ -1,4 +1,4 @@
-import { Poppins, Quicksand, Jost } from "next/font/google";
+import { Poppins, Quicksand, Jost } from "next/font/google"
 
 export const poppins = Poppins({
     subsets: ['latin'],

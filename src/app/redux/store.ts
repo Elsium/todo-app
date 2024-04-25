@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
 import todosReducer from './Features/todosSlice'
 import stickersReducer from './Features/stickersSlice'
 import tagsReducer from './Features/tagsSlice'
