@@ -14,6 +14,10 @@
 6. **MUI**
 7. **Google API** ?
 
+# Testing
+
+1. **Jest**
+
 # Fonts
 
 1. **jost** - *the titles*
