@@ -1,4 +1,4 @@
-import { Poppins, Quicksand } from "next/font/google";
+import { Poppins, Quicksand, Jost } from "next/font/google";
 
 export const poppins = Poppins({
     subsets: ['latin'],
@@ -9,4 +9,9 @@ export const quicksand = Quicksand({
     subsets: ['latin'],
     weight: ['500', '700'],
     variable: '--font-quicksand'
+})
+export const jost = Jost({
+    subsets: ['latin'],
+    weight: ['500', '700'],
+    variable: '--font-jost'
 })
