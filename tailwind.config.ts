@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import {quicksand} from "@/util/font";
 
 const config: Config = {
   content: [
@@ -8,7 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-
+      fontFamily: {
+        poppins: ['var(--font-poppins)'],
+        quicksand: ['var(--font-quicksand)'],
+      },
     },
   },
   plugins: [],
