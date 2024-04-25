@@ -1,21 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface TodosState {
     todos: Todo[]
 }
 
-export interface Todo {
+interface Todo {
     id: number
     title: string
     description: string | null
     list: string | null
     dueDate: Date | null
-    tags: string[] | null
-    subtasks: Subtasks[] | null
+    tags: number[]
+    subtasks: Subtask[]
     completed: boolean
 }
 
-export interface Subtasks {
+interface Subtask {
     id: number
     title: string
     completed: boolean
@@ -42,17 +42,37 @@ const todosSlice = createSlice({
                 Object.assign(existingTodo, todo)
             }
         },
-        toggleSubtask: (state, action: PayloadAction<{todoId: number, subtaskId: number}>) => {
+        toggleTodoCompleted: (state, action: PayloadAction<number>) => {
+            const todo = state.todos.find(todo => todo.id === action.payload)
+            if (todo) {
+                todo.completed = !todo.completed
+            }
+        },
+        toggleSubtaskCompleted: (state, action: PayloadAction<{todoId: number, subtaskId: number}>) => {
             const {todoId, subtaskId} = action.payload
             const todo = state.todos.find(todo => todo.id === todoId)
             const subtask = todo?.subtasks?.find(subtask => subtask.id === subtaskId)
             if(subtask) {
                 subtask.completed = !subtask.completed
             }
-        }
+        },
+        addSubtask: (state, action: PayloadAction<{todoId: number, subtask: Subtask}>) => {
+            const { todoId, subtask } = action.payload
+            const todo = state.todos.find(todo => todo.id === todoId)
+            if (todo) {
+                todo.subtasks.push(subtask)
+            }
+        },
+        deleteSubtask: (state, action: PayloadAction<{todoId: number, subtaskId: number}>) => {
+            const { todoId, subtaskId } = action.payload
+            const todo = state.todos.find(todo => todo.id === todoId)
+            if (todo) {
+                todo.subtasks = todo.subtasks.filter(s => s.id !== subtaskId)
+            }
+        },
     }
 })
 
-export const {addTodo, deleteTodo, editTodo, toggleSubtask} = todosSlice.actions
+export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, } = todosSlice.actions
 
 export default todosSlice.reducer
