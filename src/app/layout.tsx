@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { poppins, quicksand, jost } from "@/util/font";
+import { poppins, quicksand, jost } from "@/app/util/font";
 import "./globals.css";
+import {Providers} from "@/app/redux/provider";
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -11,7 +12,9 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${quicksand.variable} ${jost.variable}`}>
-        {children}
+          <Providers>
+              {children}
+          </Providers>
       </body>
     </html>
   );
