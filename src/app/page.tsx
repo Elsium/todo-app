@@ -1,6 +1,9 @@
+import Menu from '@/app/components/Menu/Menu'
+
 export default function Home() {
     return (
-        <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+        <main className='p-[20px] flex min-h-screen gap-[20px]'>
+            <Menu/>
             Hello world!
         </main>
     )

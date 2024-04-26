@@ -7,6 +7,7 @@ interface ListsState {
 interface List {
     id: number
     name: string
+    color: string
 }
 
 const initialState: ListsState = {

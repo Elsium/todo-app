@@ -1,0 +1,19 @@
+.btn {
+    @apply w-full flex items-center justify-between py-[5px] px-[10px] rounded
+}
+
+.btn:hover {
+    @apply bg-[#ebebeb] font-bold
+}
+
+.btn:hover > p {
+    @apply bg-[#f4f4f4] font-normal
+}
+
+.btn > div {
+    @apply flex gap-[10px]
+}
+
+.btn > p {
+    @apply w-[30px] text-xs p-[1px] bg-[#ebebeb] rounded
+}
