@@ -7,6 +7,7 @@ interface TagsState {
 interface Tag {
     id: number
     name: string
+    color: string
 }
 
 const initialState: TagsState = {

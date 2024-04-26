@@ -28,7 +28,7 @@ describe('store', () => {
     })
 
     it('should dispatch actions for listSlice', () => {
-        const newList = { id: 1, name: 'Test List' }
+        const newList = { id: 1, name: 'Test List', color: '#dfdfad' }
 
         store.dispatch(addList(newList))
         let state = store.getState()
@@ -40,7 +40,7 @@ describe('store', () => {
     })
 
     it('should dispatch actions for tagSlice', () => {
-        const newTag = { id: 1, name: 'Test Tag' }
+        const newTag = { id: 1, name: 'Test Tag', color: '#dfdfad' }
 
         store.dispatch(addTag(newTag))
         let state = store.getState()
