@@ -2,87 +2,210 @@
   "lists": [
     {"id": 1, "name": "Personal", "color": "#ff904b"},
     {"id": 2, "name": "Work", "color": "#ffe14b"},
-    {"id": 3, "name": "List 1", "color": "#4b5aff"}
+    {"id": 3, "name": "Shopping", "color": "#4b5aff"},
+    {"id": 4, "name": "Fitness", "color": "#ff4b4b"},
+    {"id": 5, "name": "Travel", "color": "#4bffdb"}
   ],
   "tags": [
-    {"id": 1, "name": "Tag 1", "color": "#ffa7f7"},
-    {"id": 2, "name": "Tag 2", "color": "#adffaa"}
+    {"id": 1, "name": "Urgent", "color": "#ffa7f7"},
+    {"id": 2, "name": "Home", "color": "#adffaa"},
+    {"id": 3, "name": "Office", "color": "#aaffff"},
+    {"id": 4, "name": "Health", "color": "#ffaa7f"},
+    {"id": 5, "name": "Finance", "color": "#a7afff"},
+    {"id": 6, "name": "Study", "color": "#afffa7"},
+    {"id": 7, "name": "Hobby", "color": "#ffaaff"},
+    {"id": 8, "name": "Travel", "color": "#afffda"}
   ],
   "todos": [
     {
       "id": 1,
-      "title": "do something",
-      "description": "",
+      "title": "Complete project report",
+      "description": "Finalize and submit the annual project report by EOD.",
       "list": 2,
       "dueDate": "2024-05-12T00:00:00.511Z",
-      "tags": [1],
+      "tags": [1, 3],
+      "subtasks": [
+        {"id": 1, "title": "Compile data", "completed": false},
+        {"id": 2, "title": "Write summary", "completed": false},
+        {"id": 3, "title": "Create charts", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Grocery shopping",
+      "description": "Buy groceries for the week.",
+      "list": 3,
+      "dueDate": "2024-05-13T00:00:00.511Z",
+      "tags": [2],
       "subtasks": [],
       "completed": false
     },
     {
-      "id": 2,
-      "title": "do something two",
-      "description": "any description",
-      "list": 1,
-      "dueDate": "2024-05-13T00:00:00.511Z",
-      "tags": [1,2],
-      "subtasks": [
-        {
-          "id": 1,
-          "title": "sub first",
-          "completed": false
-        }
-      ],
-      "completed": false
-    },
-    {
       "id": 3,
-      "title": "do something three",
-      "description": "any description more asdifho ofisd oisdfjos fjiosid fo sdijfois dfosidjf osdif",
-      "list": 3,
-      "dueDate": "2024-05-18T00:00:00.511Z",
-      "tags": [],
-      "subtasks": [
-        {
-          "id": 1,
-          "title": "sub first",
-          "completed": true
-        },
-        {
-          "id": 2,
-          "title": "sub second",
-          "completed": false
-        }
-      ],
+      "title": "Morning run",
+      "description": "Go for a 5km run in the park.",
+      "list": 4,
+      "dueDate": "2024-05-14T00:00:00.511Z",
+      "tags": [4],
+      "subtasks": [],
       "completed": false
     },
     {
       "id": 4,
-      "title": "do something four",
-      "description": "description",
-      "list": null,
-      "dueDate": "2023-12-12T00:00:00.511Z",
-      "tags": [],
+      "title": "Book hotel for vacation",
+      "description": "Reserve accommodations for the summer trip.",
+      "list": 5,
+      "dueDate": "2024-05-15T00:00:00.511Z",
+      "tags": [8],
+      "subtasks": [],
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Plan birthday party",
+      "description": "Organize a surprise party for a friend.",
+      "list": 1,
+      "dueDate": "2024-05-16T00:00:00.511Z",
+      "tags": [2],
       "subtasks": [
-        {
-          "id": 1,
-          "title": "sub first",
-          "completed": true
-        }
+        {"id": 1, "title": "Guest list", "completed": false},
+        {"id": 2, "title": "Party theme", "completed": false},
+        {"id": 3, "title": "Order cake", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Update personal blog",
+      "description": "Write and publish a new post about recent trip.",
+      "list": 1,
+      "dueDate": "2024-05-17T00:00:00.511Z",
+      "tags": [7, 5],
+      "subtasks": [
+        {"id": 1, "title": "Choose topic", "completed": true},
+        {"id": 2, "title": "Draft post", "completed": false},
+        {"id": 3, "title": "Select images", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 7,
+      "title": "Prepare for presentation",
+      "description": "",
+      "list": 2,
+      "dueDate": "",
+      "tags": [3, 1],
+      "subtasks": [
+        {"id": 1, "title": "Research data", "completed": true},
+        {"id": 2, "title": "Design slides", "completed": true}
       ],
       "completed": true
+    },
+    {
+      "id": 8,
+      "title": "Yoga class",
+      "description": "Attend the early morning yoga session on Friday.",
+      "list": 4,
+      "dueDate": null,
+      "tags": [4],
+      "subtasks": [],
+      "completed": true
+    },
+    {
+      "id": 9,
+      "title": "Car service",
+      "description": "",
+      "list": null,
+      "dueDate": "2024-05-20T00:00:00.511Z",
+      "tags": [],
+      "subtasks": [],
+      "completed": false
+    },
+    {
+      "id": 10,
+      "title": "Renew passport",
+      "description": "Fill out the application to renew the passport.",
+      "list": 5,
+      "dueDate": null,
+      "tags": [8, 6],
+      "subtasks": [
+        {"id": 1, "title": "Gather documents", "completed": true},
+        {"id": 2, "title": "Take photos", "completed": false},
+        {"id": 3, "title": "Submit application", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 11,
+      "title": "Read a book",
+      "description": "Finish reading 'The Alchemist' by Paulo Coelho.",
+      "list": 1,
+      "dueDate": "2024-05-22T00:00:00.511Z",
+      "tags": [6],
+      "subtasks": [],
+      "completed": true
+    },
+    {
+      "id": 12,
+      "title": "Organize the garage",
+      "description": "Clean and organize tools and equipment in the garage.",
+      "list": null,
+      "dueDate": "2024-05-23T00:00:00.511Z",
+      "tags": [2, 5],
+      "subtasks": [
+        {"id": 1, "title": "Sort tools", "completed": false},
+        {"id": 2, "title": "Dispose of old paint", "completed": true}
+      ],
+      "completed": false
+    },
+    {
+      "id": 13,
+      "title": "Plan weekly meals",
+      "description": "",
+      "list": 3,
+      "dueDate": "2024-05-24T00:00:00.511Z",
+      "tags": [],
+      "subtasks": [
+        {"id": 1, "title": "Check pantry", "completed": true},
+        {"id": 2, "title": "Write shopping list", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 14,
+      "title": "Backup computer files",
+      "description": "Perform a full backup of all important files on the computer.",
+      "list": 2,
+      "dueDate": null,
+      "tags": [5],
+      "subtasks": [
+        {"id": 1, "title": "Organize files", "completed": true},
+        {"id": 2, "title": "Copy to external drive", "completed": false}
+      ],
+      "completed": false
+    },
+    {
+      "id": 15,
+      "title": "Visit grandparents",
+      "description": "Spend the afternoon with grandparents and help them with any chores.",
+      "list": 1,
+      "dueDate": "2024-05-26T00:00:00.511Z",
+      "tags": [2, 7],
+      "subtasks": [
+        {"id": 1, "title": "Buy flowers", "completed": true},
+        {"id": 2, "title": "Make lunch", "completed": false}
+      ],
+      "completed": false
     }
   ],
   "stickers": [
-    {
-      "id": 1,
-      "title": "first sticker",
-      "description": "any description of sticker"
-    },
-    {
-      "id": 2,
-      "title": "second sticker",
-      "description": "any description of sticker second asd"
-    }
+    {"id": 1, "title": "Motivational Quote", "description": "You can do it!"},
+    {"id": 2, "title": "Meeting Reminder", "description": "Team meeting at 10 AM."},
+    {"id": 3, "title": "Gym Schedule", "description": "Leg day on Wednesday."},
+    {"id": 4, "title": "Dinner Plan", "description": "Try the new Italian recipe."},
+    {"id": 5, "title": "Book to Read", "description": "Start reading 'Educated' by Tara Westover."},
+    {"id": 6, "title": "Call Mom", "description": "Don't forget to call mom on Sunday."},
+    {"id": 7, "title": "Water Plants", "description": "Water the plants in the living room."}
   ]
 }

@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit"
+import {configureStore} from "@reduxjs/toolkit"
 import todosReducer from './Features/todosSlice'
 import stickersReducer from './Features/stickersSlice'
 import tagsReducer from './Features/tagsSlice'
@@ -7,12 +7,13 @@ import authReducer from './Features/authSlice'
 
 export const store = configureStore({
     reducer: {
-        todos: todosReducer,
-        stickers: stickersReducer,
-        tags: tagsReducer,
-        lists: listsReducer,
+        todoData: todosReducer,
+        stickerData: stickersReducer,
+        tagData: tagsReducer,
+        listData: listsReducer,
         auth: authReducer
-    }
+    },
+    devTools: process.env.NODE_ENV !== 'production'
 })
 
 export type RootState = ReturnType<typeof store.getState>
