@@ -1,7 +1,7 @@
 import TagItem from './TagItem/TagItem'
 import AddIcon from '@mui/icons-material/Add'
 
-const Lists = () => {
+const Tags = () => {
 
     const Tag = [
         {id: 1, name: 'Tag 1', color: '#ffa7f7'},
@@ -22,4 +22,4 @@ const Lists = () => {
     )
 }
 
-export default Lists
+export default Tags

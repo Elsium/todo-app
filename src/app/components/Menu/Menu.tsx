@@ -1,29 +1,25 @@
-import Title from './Title/Title'
-import Search from './Search/Search'
-import Tasks from './Tasks/Tasks'
-import Lists from './Lists/Lists'
-import Tags from './Tags/Tags'
-import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+import Additional from '@/app/components/Menu/Additional/Additional'
+import Title from '@/app/components/UI/Title/Title'
+import Search from '@/app/components/Menu/Search/Search'
+import MenuTasks from '@/app/components/Menu/MenuTasks/MenuTasks'
+import Lists from '@/app/components/Menu/Lists/Lists'
+import Tags from '@/app/components/Menu/Tags/Tags'
+import MenuIcon from '@mui/icons-material/Menu'
 
 const Menu = () => {
 
     return (
-        <nav className='rounded-xl bg-[#f4f4f4] w-[500px] flex flex-col p-[20px] justify-between font-quicksand'>
+        <nav className='flex flex-col justify-between w-[500px] p-[20px] bg-[#f4f4f4] rounded-xl font-quicksand'>
             <div className='w-full flex flex-col gap-[20px]'>
-                <Title/>
+                <Title title={'Menu'} Icon={MenuIcon}/>
                 <Search/>
-                <Tasks/>
+                <MenuTasks/>
                 <hr/>
                 <Lists/>
                 <hr/>
                 <Tags/>
             </div>
-            <div>
-                <button className='w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] hover:bg-[#ebebeb] hover:font-bold'>
-                    <ExitToAppIcon/>
-                    <p>Sing out</p>
-                </button>
-            </div>
+            <Additional/>
         </nav>
     )
 }

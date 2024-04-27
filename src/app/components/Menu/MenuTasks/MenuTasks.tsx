@@ -1,9 +1,9 @@
-import s from './Tasks.module.css'
+import s from './MenuTasks.module.css'
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl'
 import StickyNote2Icon from '@mui/icons-material/StickyNote2'
 
-const Tasks = () => {
+const MenuTasks = () => {
     return (
         <div className='flex flex-col items-start gap-[5px]'>
             <p className='font-jost font-bold text-xs'>TASKS</p>
@@ -32,4 +32,4 @@ const Tasks = () => {
     )
 }
 
-export default Tasks
+export default MenuTasks
