@@ -4,7 +4,7 @@ import FillButton from '@/app/components/UI/FillButton/FillButton'
 
 export default function Login() {
     return (
-        <main className='grid grid-cols-2 gap-[40px] p-[20px]'>
+        <main className='grid grid-cols-2 gap-[40px] p-[20px] select-none'>
             <div className='relative h-[calc(100vh-44px)] rounded-xl bg-gray-800 overflow-hidden'>
                 <Image src={img} alt={'TaskZen'} className='absolute bottom-0 left-1/5'/>
                 <p className='absolute top-[20px] left-[20px] font-jost font-bold text-white text-3xl'>TaskZen</p>

@@ -5,7 +5,7 @@ import StickyNote2Icon from '@mui/icons-material/StickyNote2'
 
 const MenuTasks = () => {
     return (
-        <div className='flex flex-col items-start gap-[5px]'>
+        <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>TASKS</p>
             <button className={s.btn}>
                 <div>

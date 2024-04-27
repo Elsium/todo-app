@@ -10,7 +10,7 @@ const Lists = () => {
     ]
 
     return (
-        <div className='flex flex-col items-start gap-[5px]'>
+        <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>LISTS</p>
             {List.map(item => <ListItem key={item.id} name={item.name} color={item.color} count={item.count}/>)}
             <button className='w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] hover:bg-[#ebebeb]'>

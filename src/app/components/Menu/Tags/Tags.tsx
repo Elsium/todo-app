@@ -9,7 +9,7 @@ const Tags = () => {
     ]
 
     return (
-        <div className='flex flex-col items-start gap-[5px]'>
+        <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>TAGS</p>
             <div className='flex flex-wrap gap-[10px]'>
                 {Tag.map(item => <TagItem key={item.id} name={item.name} color={item.color}/>)}

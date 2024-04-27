@@ -11,7 +11,7 @@ const Search = () => {
     return (
         <div className='flex w-full rounded border border-gray-300 p-[5px]'>
             <SearchIcon/>
-            <SearchForm onSearch={search} cn='ml-[10px] w-11/12 bg-inherit focus:outline-none' ph='Search'/>
+            <SearchForm onSearch={search} cn='ml-[10px] w-11/12 bg-inherit focus:outline-none placeholder:select-none' ph='Search'/>
         </div>
     )
 }
