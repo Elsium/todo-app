@@ -1,5 +1,5 @@
 import type {Metadata} from "next"
-import {poppins, quicksand, jost} from "@/app/util/font"
+import {poppins, quicksand, jost} from "@/app/util/font/font"
 import "./globals.css"
 import {Providers} from "@/app/redux/provider"
 import React from "react"

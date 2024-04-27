@@ -4,7 +4,7 @@ interface TagsState {
     tags: Tag[]
 }
 
-interface Tag {
+export interface Tag {
     id: number
     name: string
     color: string

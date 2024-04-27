@@ -1,4 +1,4 @@
-import Additional from '@/app/components/Menu/Additional/Additional'
+import MenuAdditional from '@/app/components/Menu/MenuAdditional/MenuAdditional'
 import Title from '@/app/components/UI/Title/Title'
 import Search from '@/app/components/Menu/Search/Search'
 import MenuTasks from '@/app/components/Menu/MenuTasks/MenuTasks'
@@ -19,7 +19,7 @@ const Menu = () => {
                 <hr/>
                 <Tags/>
             </div>
-            <Additional/>
+            <MenuAdditional/>
         </nav>
     )
 }

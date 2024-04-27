@@ -8,7 +8,7 @@ interface Todo {
     id: number
     title: string
     description: string | null
-    list: string | null
+    list: number | null
     dueDate: Date | null
     tags: number[]
     subtasks: Subtask[]

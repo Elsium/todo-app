@@ -1,0 +1,88 @@
+{
+  "lists": [
+    {"id": 1, "name": "Personal", "color": "#ff904b"},
+    {"id": 2, "name": "Work", "color": "#ffe14b"},
+    {"id": 3, "name": "List 1", "color": "#4b5aff"}
+  ],
+  "tags": [
+    {"id": 1, "name": "Tag 1", "color": "#ffa7f7"},
+    {"id": 2, "name": "Tag 2", "color": "#adffaa"}
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "title": "do something",
+      "description": "",
+      "list": 2,
+      "dueDate": "2024-05-12T00:00:00.511Z",
+      "tags": [1],
+      "subtasks": [],
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "do something two",
+      "description": "any description",
+      "list": 1,
+      "dueDate": "2024-05-13T00:00:00.511Z",
+      "tags": [1,2],
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "sub first",
+          "completed": false
+        }
+      ],
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "do something three",
+      "description": "any description more asdifho ofisd oisdfjos fjiosid fo sdijfois dfosidjf osdif",
+      "list": 3,
+      "dueDate": "2024-05-18T00:00:00.511Z",
+      "tags": [],
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "sub first",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "sub second",
+          "completed": false
+        }
+      ],
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "do something four",
+      "description": "description",
+      "list": null,
+      "dueDate": "2023-12-12T00:00:00.511Z",
+      "tags": [],
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "sub first",
+          "completed": true
+        }
+      ],
+      "completed": true
+    }
+  ],
+  "stickers": [
+    {
+      "id": 1,
+      "title": "first sticker",
+      "description": "any description of sticker"
+    },
+    {
+      "id": 2,
+      "title": "second sticker",
+      "description": "any description of sticker second asd"
+    }
+  ]
+}

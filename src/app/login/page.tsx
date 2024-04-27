@@ -1,5 +1,6 @@
 import img from '@/app/assets/login_image.png'
 import Image from 'next/image'
+import FillButton from '@/app/components/UI/FillButton/FillButton'
 
 export default function Login() {
     return (
@@ -12,9 +13,8 @@ export default function Login() {
                 <div className='flex flex-col justify-center items-start h-[calc(100vh-44px)] w-3/4'>
                     <p className='font-jost font-bold text-7xl leading-[120px]'>Log in</p>
                     <p className='font-quicksand text-2xl'>This is a modern, responsive web application designed to help you manage your daily tasks efficiently. The Todo App allows you to organize your tasks with ease, providing a user-friendly interface and a seamless user experience.</p>
-                    <button className='mt-[50px] w-[200px] h-[50px]
-                    bg-[#ebebeb] rounded-xl self-center
-                    text-2xl hover:bg-[#cbcbcb] active:bg-[#dbdbdb]'>Google</button>
+                    <br/>
+                    <FillButton color={'#cbcbcb'}>Google</FillButton>
                 </div>
             </div>
         </main>
