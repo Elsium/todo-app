@@ -3,10 +3,10 @@ import s from './ListItem.module.css'
 interface ComponentProps {
     name: string
     color: string
-    count: number
+    count?: number
 }
 
-const ListItem = ({name, color, count}: ComponentProps) => {
+const ListItem = ({name, color, count = 3}: ComponentProps) => {
 
     return (
         <button className={s.btn}>
