@@ -30,10 +30,13 @@ const StickersSlice = createSlice({
             if(existingSticker) {
                 Object.assign(existingSticker, sticker)
             }
+        },
+        loadStickers: (state, action: PayloadAction<StickersState>) => {
+            state.stickers = action.payload
         }
     }
 })
 
-export const {addSticker, deleteSticker, editSticker} = StickersSlice.actions
+export const {addSticker, deleteSticker, editSticker, loadStickers} = StickersSlice.actions
 
 export default StickersSlice.reducer

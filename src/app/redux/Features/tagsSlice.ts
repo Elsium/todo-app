@@ -4,7 +4,7 @@ interface TagsState {
     tags: Tag[]
 }
 
-export interface Tag {
+interface Tag {
     id: number
     name: string
     color: string
@@ -24,9 +24,12 @@ const TagsSlice = createSlice({
         deleteTag: (state, action: PayloadAction<number>) => {
             state.tags = state.tags.filter(tags => tags.id !== action.payload)
         },
+        loadTags: (state, action: PayloadAction<TagsState>) => {
+            state.tags = action.payload
+        }
     }
 })
 
-export const {addTag, deleteTag} = TagsSlice.actions
+export const {addTag, deleteTag, loadTags} = TagsSlice.actions
 
 export default  TagsSlice.reducer

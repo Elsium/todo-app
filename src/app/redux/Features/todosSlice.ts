@@ -70,9 +70,12 @@ const todosSlice = createSlice({
                 todo.subtasks = todo.subtasks.filter(s => s.id !== subtaskId)
             }
         },
+        loadTodos: (state, action: PayloadAction<TodosState>) => {
+            state.todos = action.payload
+        }
     }
 })
 
-export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, } = todosSlice.actions
+export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, loadTodos} = todosSlice.actions
 
 export default todosSlice.reducer
