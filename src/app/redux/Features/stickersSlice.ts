@@ -31,7 +31,7 @@ const StickersSlice = createSlice({
                 Object.assign(existingSticker, sticker)
             }
         },
-        loadStickers: (state, action: PayloadAction<StickersState>) => {
+        loadStickers: (state, action: PayloadAction<Sticker[]>) => {
             state.stickers = action.payload
         }
     }

@@ -24,7 +24,7 @@ const TagsSlice = createSlice({
         deleteTag: (state, action: PayloadAction<number>) => {
             state.tags = state.tags.filter(tags => tags.id !== action.payload)
         },
-        loadTags: (state, action: PayloadAction<TagsState>) => {
+        loadTags: (state, action: PayloadAction<Tag[]>) => {
             state.tags = action.payload
         }
     }

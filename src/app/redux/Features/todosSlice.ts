@@ -70,7 +70,7 @@ const todosSlice = createSlice({
                 todo.subtasks = todo.subtasks.filter(s => s.id !== subtaskId)
             }
         },
-        loadTodos: (state, action: PayloadAction<TodosState>) => {
+        loadTodos: (state, action: PayloadAction<Todo[]>) => {
             state.todos = action.payload
         }
     }
