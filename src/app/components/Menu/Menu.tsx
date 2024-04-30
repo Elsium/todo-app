@@ -7,7 +7,7 @@ import MenuTasks from '@/app/components/Menu/next/MenuTasks/MenuTasks'
 import Lists from '@/app/components/Menu/Lists/Lists'
 import Tags from '@/app/components/Menu/Tags/Tags'
 import MenuIcon from '@mui/icons-material/Menu'
-import {useState} from 'react'
+import {Suspense, useState} from 'react'
 
 const Menu = () => {
 
@@ -23,12 +23,20 @@ const Menu = () => {
         <nav className='flex flex-col justify-between basis-[300px] min-w-[300px] p-[20px] bg-[#f4f4f4] rounded-xl font-quicksand'>
             <div className='w-full flex flex-col gap-[20px]'>
                 <Title title={'Menu'} Icon={MenuIcon} onClick={toggleMenu}/>
-                <Search/>
-                <MenuTasks/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Search/>
+                </Suspense>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <MenuTasks/>
+                </Suspense>
                 <hr/>
-                <Lists/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Lists/>
+                </Suspense>
                 <hr/>
-                <Tags/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Tags/>
+                </Suspense>
             </div>
             <MenuAdditional/>
         </nav>
