@@ -2,7 +2,7 @@
 
 This is a modern, responsive web application designed to help you manage your daily tasks efficiently. The Todo App allows you to organize your tasks with ease, providing a user-friendly interface and a seamless user experience.
 
-**Live Demo**: [Todo App Live](https://elsium.github.io/todo-app/)
+**Live Demo**: [Todo App Live](https://todo-app-gray-two.vercel.app/)
 
 ---
 
