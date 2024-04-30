@@ -11,7 +11,7 @@ describe('todosReducer', () => {
     const initialState = {
         todos: []
     }
-    const todo = {id: 1, title: 'Test Todo', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false}
+    const todo = {id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false}
     const subtask = { id: 1, title: 'Test Subtask', completed: false }
 
     it('should handle initial state', () => {
@@ -19,7 +19,7 @@ describe('todosReducer', () => {
     })
 
     it('should handle addTodo', () => {
-        const newTodo = { id: 1, title: 'Test Todo', description: null, list: null, dueDate: null, tags: null, subtasks: null, completed: false }
+        const newTodo = { id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: null, subtasks: null, completed: false }
         const action = { type: addTodo.type, payload: newTodo }
         const expectedState = {
             todos: [newTodo],
@@ -29,7 +29,7 @@ describe('todosReducer', () => {
 
     it('should handle deleteTodo', () => {
         const existingState = {
-            todos: [{ id: 1, title: 'Test Todo', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
+            todos: [{ id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
         }
         const action = { type: deleteTodo.type, payload: 1 }
         expect(todosReducer(existingState, action)).toEqual(initialState)
@@ -37,9 +37,9 @@ describe('todosReducer', () => {
 
     it('should handle editTodo', () => {
         const existingState = {
-            todos: [{ id: 1, title: 'Test Todo', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
+            todos: [{ id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
         }
-        const updatedTodo = { title: 'Updated Todo' }
+        const updatedTodo = { title: 'Updated TodoItem' }
         const action = { type: editTodo.type, payload: { id: 1, todo: updatedTodo } }
         const expectedState = {
             todos: [{ ...existingState.todos[0], ...updatedTodo }],

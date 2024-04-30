@@ -1,7 +1,7 @@
 'use client'
 
 import SearchIcon from '@mui/icons-material/Search'
-import SearchForm from '@/app/components/Menu/SearchForm/SearchForm'
+import SearchForm from '@/app/components/Menu/next/SearchForm'
 
 const Search = () => {
     const search = (searchQuery: string) => {

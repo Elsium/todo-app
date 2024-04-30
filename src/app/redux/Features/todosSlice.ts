@@ -4,7 +4,7 @@ interface TodosState {
     todos: Todo[]
 }
 
-interface Todo {
+export interface Todo {
     id: number
     title: string
     description: string | null
@@ -15,7 +15,7 @@ interface Todo {
     completed: boolean
 }
 
-interface Subtask {
+export interface Subtask {
     id: number
     title: string
     completed: boolean

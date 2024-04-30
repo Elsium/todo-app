@@ -1,14 +1,18 @@
 import DefaultTable from '@/app/components/Table/DefaultTable/DefaultTable'
-import Sticky from '@/app/components/Table/Sticky/Sticky'
-import Upcoming from '@/app/components/Table/Upcoming/Upcoming'
+import Sticky from '@/app/components/Table/next/Sticky'
+import Upcoming from '@/app/components/Table/next/Upcoming'
+import {Todo} from '@/app/redux/Features/todosSlice'
 
+interface PropsType {
+    openTask: (task: Todo) => void
+}
 
-const Table = () => {
+const Table = ({openTask}: PropsType) => {
     return (
         <div className='w-full'>
-            <DefaultTable/>
-            <Sticky/>
-            <Upcoming/>
+            <DefaultTable openTask={openTask}/>
+            {/*<Sticky/>*/}
+            {/*<Upcoming/>*/}
         </div>
     )
 }

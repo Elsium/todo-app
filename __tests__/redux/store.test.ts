@@ -6,7 +6,7 @@ import { addTag, deleteTag } from "@/app/redux/Features/tagsSlice"
 
 describe('store', () => {
     it('should dispatch actions for todosSlice', () => {
-        const todo = { id: 1, title: 'Test Todo', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }
+        const todo = { id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }
         store.dispatch(addTodo(todo))
         let state = store.getState()
         expect(state.todoData.todos).toContainEqual(todo)

@@ -4,7 +4,7 @@ interface ListsState {
     lists: List[]
 }
 
-interface List {
+export interface List {
     id: number
     name: string
     color: string

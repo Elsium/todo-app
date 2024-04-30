@@ -1,13 +1,17 @@
+'use client'
+
+import {Tag} from '@/app/redux/Features/tagsSlice'
+
 interface ComponentProps {
-    name: string
-    color: string
+    tag: Tag
+    filterTodos: (tag: string | undefined) => void
 }
 
-const TagItem = ({name, color}: ComponentProps) => {
+const TagItem = ({tag, filterTodos}: ComponentProps) => {
 
     return (
-        <button style={{background: color}} className='h-7 px-[15px] rounded text-xs text-center hover:opacity-70'>
-            <p>{name}</p>
+        <button onClick={() => filterTodos(tag.id.toString())} style={{background: tag.color}} className='h-7 px-[15px] rounded text-xs text-center hover:opacity-70'>
+            <p>{tag.name}</p>
         </button>
     )
 }

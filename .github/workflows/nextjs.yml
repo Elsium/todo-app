@@ -1,4 +1,4 @@
-name: Deploy Todo App
+name: Deploy TodoItem App
 on:
   push:
     branches: ["main"]
