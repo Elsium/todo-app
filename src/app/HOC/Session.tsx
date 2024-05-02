@@ -13,7 +13,7 @@ const Session = ({children}:{children: React.ReactNode}) => {
 
     useEffect(() => {
         if (!isAuth) router.push('/login')
-        if (session?.user) {
+        if (session?.user && session?.accessToken) {
             dispatch(signInSuccess(session.user))
             dispatch(fetchAndSetData())
         }

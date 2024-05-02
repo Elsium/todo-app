@@ -22,6 +22,10 @@ const authOption: NextAuthOptions = {
             }
             return token
         },
+        async session({ session, token }) {
+            session.accessToken = token.accessToken
+            return session
+        },
         async signIn({account, profile}) {
             if(!profile?.email) {
                 throw new Error('No profile')
