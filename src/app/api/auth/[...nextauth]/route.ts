@@ -16,9 +16,9 @@ const authOption: NextAuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, account }) {
-            if (account?.accessToken) {
-                token.accessToken = account.accessToken
+        async jwt({token, account}) {
+            if (account?.access_token) {
+                token.accessToken = account.access_token
             }
             return token
         },
@@ -26,7 +26,6 @@ const authOption: NextAuthOptions = {
             if(!profile?.email) {
                 throw new Error('No profile')
             }
-            console.log(profile)
             return true
         }
     }

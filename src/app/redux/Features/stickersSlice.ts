@@ -4,7 +4,7 @@ interface StickersState {
     stickers: Sticker[]
 }
 
-interface Sticker {
+export interface Sticker {
     id: number
     title: string
     description: string | null

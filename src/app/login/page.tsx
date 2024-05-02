@@ -2,7 +2,7 @@
 
 import img from '@/app/assets/login_image.png'
 import Image from 'next/image'
-import React from 'react'
+import React, {useEffect} from 'react'
 import {SessionProvider, signIn} from 'next-auth/react'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/app/redux/store'
@@ -13,7 +13,12 @@ import Link from 'next/link'
 export default function Login() {
     const isAuth = useSelector((state: RootState) => state.auth.isAuth)
     const router = useRouter()
-    if (isAuth) router.push('/work')
+
+    useEffect(() => {
+        if (isAuth) router.push('/work')
+    }, [isAuth, router])
+
+    if(isAuth) return null
 
     return (
         <SessionProvider>

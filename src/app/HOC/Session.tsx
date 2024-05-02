@@ -8,16 +8,17 @@ import {useRouter} from 'next/navigation'
 const Session = ({children}:{children: React.ReactNode}) => {
     const isAuth = useSelector((state: RootState) => state.auth.isAuth)
     const router = useRouter()
-    if (!isAuth) router.push('/login')
     const dispatch = useDispatch<AppDispatch>()
     const {data: session} = useSession()
 
     useEffect(() => {
+        if (!isAuth) router.push('/login')
         if (session?.user) {
             dispatch(signInSuccess(session.user))
             dispatch(fetchAndSetData())
         }
-    }, [session, dispatch])
+    }, [isAuth, session, dispatch])
+
     return (
         <>
             {children}

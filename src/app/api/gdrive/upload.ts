@@ -1,11 +1,14 @@
 import axios from 'axios'
-import { RootState } from '@/app/redux/store'
 import {getFileIdByName} from '@/app/api/gdrive/getFileIdByName'
+import {List} from '@/app/redux/Features/listsSlice'
+import {Tag} from '@/app/redux/Features/tagsSlice'
+import {Todo} from '@/app/redux/Features/todosSlice'
+import {Sticker} from '@/app/redux/Features/stickersSlice'
 
-export const uploadState = async (state: RootState, accessToken: string) => {
-    const fileId = getFileIdByName('todo-app-state.json', accessToken)
+export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], filename: string, accessToken: string) => {
+    const fileId = getFileIdByName(filename, accessToken)
     const fileMetadata = {
-        name: 'todo-app-state.json',
+        name: filename,
         mimeType: 'application/json',
     }
     const media = {
