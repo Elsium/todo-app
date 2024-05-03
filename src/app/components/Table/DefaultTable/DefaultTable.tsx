@@ -6,6 +6,7 @@ import {Todo} from '@/app/redux/Features/todosSlice'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/app/redux/store'
 import {useSearchParams} from 'next/navigation'
+import AddTodoForm from '@/app/components/Table/DefaultTable/next/AddTodoForm'
 
 interface PropsType {
     openTask: (task: Todo) => void
@@ -33,7 +34,7 @@ const DefaultTable = ({openTask}: PropsType) => {
     return (
         <section className='w-full flex flex-col justify-start p-[30px]'>
             <TableTitle title={title} count={todos.length}/>
-            <div>search</div>
+            <AddTodoForm/>
             <Todos todos={todos} openTask={openTask}/>
         </section>
     )

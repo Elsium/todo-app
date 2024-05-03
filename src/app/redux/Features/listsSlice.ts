@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {RootState} from '@/app/redux/store'
+import {uploadListData} from '@/app/redux/Thunks/googleThunk'
 
 interface ListsState {
     lists: List[]
@@ -9,6 +11,25 @@ export interface List {
     name: string
     color: string
 }
+
+export const addListAndUpload = createAsyncThunk(
+    'lists/addListAndUpload',
+    async ({name, color, accessToken}: {name: string, color: string, accessToken: string}, {getState, dispatch}) => {
+        const newList: List = {
+            id: Date.now(),
+            name,
+            color
+        }
+
+        dispatch(addList(newList))
+
+        const updatedLists = (getState() as RootState).listData.lists
+
+        await dispatch(uploadListData({state: updatedLists, accessToken}))
+
+        return newList
+    }
+)
 
 const initialState: ListsState = {
     lists: []

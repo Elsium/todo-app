@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {RootState} from '@/app/redux/store'
+import {uploadTagData} from '@/app/redux/Thunks/googleThunk'
 
 interface TagsState {
     tags: Tag[]
@@ -9,6 +11,25 @@ export interface Tag {
     name: string
     color: string
 }
+
+export const addTagAndUpload = createAsyncThunk(
+    'tags/addTagAndUpload',
+    async ({name, color, accessToken}: {name: string, color: string, accessToken: string}, {getState, dispatch}) => {
+        const newTag: Tag = {
+            id: Date.now(),
+            name,
+            color
+        }
+
+        dispatch(addTag(newTag))
+
+        const updatedTags = (getState() as RootState).tagData.tags
+
+        await dispatch(uploadTagData({state: updatedTags, accessToken}))
+
+        return newTag
+    }
+)
 
 const initialState: TagsState = {
     tags: []

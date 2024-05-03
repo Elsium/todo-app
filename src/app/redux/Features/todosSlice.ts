@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {uploadTodoData} from '@/app/redux/Thunks/googleThunk'
+import {RootState} from '@/app/redux/store'
 
 interface TodosState {
     todos: Todo[]
@@ -20,6 +22,30 @@ export interface Subtask {
     title: string
     completed: boolean
 }
+
+export const addTodoAndUpload = createAsyncThunk(
+    'todos/addTodoAndUpload',
+    async({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
+        const newTodo: Todo = {
+            id: Date.now(),
+            title,
+            description: null,
+            list: null,
+            dueDate: null,
+            tags: [],
+            subtasks: [],
+            completed: false,
+        }
+
+        dispatch(addTodo(newTodo))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+
+        return newTodo
+    }
+)
 
 const initialState: TodosState = {
     todos: []

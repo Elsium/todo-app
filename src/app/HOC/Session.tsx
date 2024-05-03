@@ -3,8 +3,8 @@ import {useSession} from 'next-auth/react'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppDispatch, RootState} from '@/app/redux/store'
 import {signInSuccess} from '@/app/redux/Features/authSlice'
-import {fetchAndSetData} from '@/app/redux/Thunks/fetchAndSetData'
 import {useRouter} from 'next/navigation'
+import {getAllData} from '@/app/redux/Thunks/googleThunk'
 const Session = ({children}:{children: React.ReactNode}) => {
     const isAuth = useSelector((state: RootState) => state.auth.isAuth)
     const router = useRouter()
@@ -13,9 +13,9 @@ const Session = ({children}:{children: React.ReactNode}) => {
 
     useEffect(() => {
         if (!isAuth) router.push('/login')
-        if (session?.user && session?.accessToken) {
+        if (session?.user && session?.accessToken && !isAuth) {
             dispatch(signInSuccess(session.user))
-            dispatch(fetchAndSetData())
+            dispatch(getAllData(session.accessToken))
         }
     }, [isAuth, session, dispatch])
 

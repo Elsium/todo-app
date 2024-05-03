@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {RootState} from '@/app/redux/store'
+import {uploadStickerData} from '@/app/redux/Thunks/googleThunk'
 
 interface StickersState {
     stickers: Sticker[]
@@ -9,6 +11,25 @@ export interface Sticker {
     title: string
     description: string | null
 }
+
+export const addStickerAndUpload = createAsyncThunk(
+    'stickers/addStickerAndUpload',
+    async ({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
+        const newSticker: Sticker = {
+            id: Date.now(),
+            title,
+            description: null
+        }
+
+        dispatch(addSticker(newSticker))
+
+        const updatedStickers = (getState() as RootState).stickerData.stickers
+
+        await dispatch(uploadStickerData({state: updatedStickers, accessToken}))
+
+        return newSticker
+    }
+)
 
 const initialState: StickersState = {
     stickers: []
