@@ -26,8 +26,8 @@ const AddTodoForm: React.FC = () => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit} className="flex items-center">
-            <button type="submit" className="p-2">
+        <form onSubmit={formik.handleSubmit} className="mt-[20px] flex items-center border border-gray-300 rounded">
+            <button type="submit" className="p-2 outline-none focus:text-[#fed439]">
                 <AddIcon/>
             </button>
             <input
@@ -36,7 +36,7 @@ const AddTodoForm: React.FC = () => {
                 onChange={formik.handleChange}
                 value={formik.values.title}
                 placeholder="Add a new task"
-                className="flex-1 p-2 border-2 border-gray-300 rounded"
+                className="flex-1 p-2 outline-none"
             />
         </form>
     )

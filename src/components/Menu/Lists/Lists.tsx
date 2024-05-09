@@ -41,7 +41,7 @@ const Lists = () => {
         <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>LISTS</p>
             {lists.map(list => <ListItem key={list.id} filterTodos={filterTodos} list={list} count={todos.filter(todo => todo.list === list.id).length}/>)}
-            <button className='w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] hover:bg-[#ebebeb]'>
+            <button className='w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] hover:bg-listHover'>
                 <AddIcon/>
                 <p>Add New List</p>
             </button>

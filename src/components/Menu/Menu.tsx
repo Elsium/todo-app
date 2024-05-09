@@ -20,7 +20,7 @@ const Menu = () => {
     if(!show) return <button className='self-start flex items-end h-[50px] mr-[40px]' onClick={() => toggleMenu(true)}><MenuIcon style={{fontSize: '2rem'}} className='text-[#7c7c7c]'/></button>
 
     return (
-        <nav className='flex flex-col justify-between basis-[300px] min-w-[300px] p-[20px] bg-[#f4f4f4] rounded-xl font-quicksand'>
+        <nav className='flex flex-col justify-between basis-[300px] min-w-[300px] p-[20px] bg-ground rounded-xl font-quicksand'>
             <div className='w-full flex flex-col gap-[20px]'>
                 <Title title={'Menu'} Icon={MenuIcon} onClick={toggleMenu}/>
                 <Suspense fallback={<div>Loading...</div>}>

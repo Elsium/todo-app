@@ -3,11 +3,11 @@
 }
 
 .btn:hover {
-    @apply bg-[#ebebeb] font-bold
+    @apply bg-listHover font-bold
 }
 
 .btn:hover > p {
-    @apply bg-[#f4f4f4] font-normal
+    @apply bg-ground font-normal
 }
 
 .btn > div {
@@ -15,5 +15,5 @@
 }
 
 .btn > p {
-    @apply w-[30px] text-xs p-[1px] bg-[#ebebeb] rounded
+    @apply w-[30px] text-xs p-[1px] bg-listHover rounded
 }
