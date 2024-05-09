@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useSession} from 'next-auth/react'
+import {signIn, useSession} from 'next-auth/react'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppDispatch, RootState} from '@/redux/store'
 import {signInSuccess} from '@/redux/Features/authSlice'
@@ -13,6 +13,7 @@ const Session = ({children}:{children: React.ReactNode}) => {
 
     useEffect(() => {
         if (!isAuth) router.push('/login')
+        if (session?.error === 'RefreshAccessTokenError') signIn()
         if (session?.user && session?.accessToken && !isAuth) {
             dispatch(signInSuccess(session.user))
             dispatch(getAllData(session.accessToken))
