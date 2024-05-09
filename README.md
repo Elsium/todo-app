@@ -23,7 +23,8 @@ The application is built using the following technologies:
 4. **OverlayScrollbars**: A library for customizing scrollbars.
 5. **Formik**: A small library that helps you with the 3 most annoying parts: Getting values in and out of form state, validation and error messages, and handling form submission.
 6. **MUI (Material-UI)**: A comprehensive library of React components that implement Google's Material Design.
-7. **Google API**:? Potential integration for syncing tasks with Google services (TBD).
+7. **Google API**: Potential integration for syncing tasks with Google services (TBD).
+8. **react-color**: A library for pick the color.
 
 ---
 
