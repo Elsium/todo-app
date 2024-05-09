@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add'
 import {AppDispatch} from '@/redux/store'
 
 
-const AddTodoForm: React.FC = () => {
+const AddTodoForm = () => {
     const { data: session } = useSession()
     const accessToken = session?.accessToken
     const dispatch = useDispatch<AppDispatch>()
