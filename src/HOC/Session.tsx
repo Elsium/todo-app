@@ -13,7 +13,7 @@ const Session = ({children}:{children: React.ReactNode}) => {
 
     useEffect(() => {
         if (!isAuth) router.push('/login')
-        if (session?.error === 'RefreshAccessTokenError') signIn()
+        if (session?.error === 'RefreshAccessTokenError') signIn('google', { callbackUrl: '/work' })
         if (session?.user && session?.accessToken && !isAuth) {
             dispatch(signInSuccess(session.user))
             dispatch(getAllData(session.accessToken))

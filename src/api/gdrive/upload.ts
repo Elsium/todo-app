@@ -19,7 +19,7 @@ export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], fi
     try {
         if (fileId) {
             const url = `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`
-            const response = await axios.patch(url, media.body, {
+            const response = await axios.post(url, media.body, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json',

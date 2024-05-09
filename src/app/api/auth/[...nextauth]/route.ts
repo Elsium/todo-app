@@ -47,16 +47,18 @@ const authOption: NextAuthOptions = {
     providers: [
         GoogleProvider({
             clientId: GOOGLE_CLIENT_ID,
-            clientSecret: GOOGLE_CLIENT_SECRET
+            clientSecret: GOOGLE_CLIENT_SECRET,
+            authorization: {
+                params: {
+                    scope: 'openid email profile https://www.googleapis.com/auth/drive.file'
+                }
+            }
         })
     ],
     callbacks: {
         async jwt({token, account}) {
-            if (account?.expires_at && account.access_token) {
+            if (account) {
                 token.accessToken = account.access_token
-                token.refreshToken = account.refresh_token
-                token.accessTokenExpires = Date.now() + account.expires_at
-                return token
             }
             if (!token.accessTokenExpires || Date.now() < token.accessTokenExpires) {
                 return token
