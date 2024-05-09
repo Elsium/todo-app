@@ -5,9 +5,9 @@ import Image from 'next/image'
 import React, {useEffect} from 'react'
 import {SessionProvider, signIn} from 'next-auth/react'
 import {useSelector} from 'react-redux'
-import {RootState} from '@/app/redux/store'
+import {RootState} from '@/redux/store'
 import {useRouter} from 'next/navigation'
-import Session from '@/app/HOC/Session'
+import Session from '@/HOC/Session'
 import Link from 'next/link'
 
 export default function Login() {

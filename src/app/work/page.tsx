@@ -1,12 +1,12 @@
 'use client'
 
-import Menu from '@/app/components/Menu/Menu'
-import Task from '@/app/components/Task/Task'
-import Table from '@/app/components/Table/Table'
+import Menu from '@/components/Menu/Menu'
+import Task from '@/components/Task/Task'
+import Table from '@/components/Table/Table'
 import {SessionProvider} from 'next-auth/react'
-import Session from '@/app/HOC/Session'
+import Session from '@/HOC/Session'
 import {useState} from 'react'
-import {Todo} from '@/app/redux/Features/todosSlice'
+import {Todo} from '@/redux/Features/todosSlice'
 
 
 export default function Work() {

@@ -1,7 +1,7 @@
 import type {Metadata} from "next"
-import {poppins, quicksand, jost} from "@/app/util/font"
+import {poppins, quicksand, jost} from "@/util/font"
 import "./globals.css"
-import {Providers} from "@/app/redux/provider"
+import {Providers} from "@/redux/provider"
 import React from "react"
 
 export const metadata: Metadata = {
