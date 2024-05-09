@@ -40,7 +40,7 @@ const Lists = () => {
     return (
         <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>LISTS</p>
-            {lists.map(list => <ListItem key={list.id} filterTodos={filterTodos} list={list} count={todos.filter(todo => todo.list === list.id).length}/>)}
+            {lists?.map(list => <ListItem key={list.id} filterTodos={filterTodos} list={list} count={todos.filter(todo => todo.list === list.id).length}/>)}
             <AddButton />
         </div>
     )

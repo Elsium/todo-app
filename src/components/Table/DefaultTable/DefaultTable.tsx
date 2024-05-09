@@ -38,7 +38,7 @@ const DefaultTable = ({openTask}: PropsType) => {
 
     return (
         <section className='w-full flex flex-col justify-start p-[30px]'>
-            <TableTitle title={title} count={todos.length}/>
+            <TableTitle title={title} count={todos?.length}/>
             <AddTodoForm/>
             <Todos todos={todos} openTask={openTask}/>
         </section>

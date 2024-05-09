@@ -19,21 +19,21 @@ const MenuTasks = () => {
                     <KeyboardDoubleArrowRightIcon/>
                     <p>Upcoming</p>
                 </div>
-                <p>{todos.length}</p>
+                <p>{todos?.length}</p>
             </button>
             <button className={s.btn}>
                 <div>
                     <ChecklistRtlIcon/>
                     <p>Today</p>
                 </div>
-                <p>{todos.length}</p>
+                <p>{todos?.length}</p>
             </button>
             <button className={s.btn}>
                 <div>
                     <StickyNote2Icon/>
                     <p>Sticky Wall</p>
                 </div>
-                <p>{stickers.length}</p>
+                <p>{stickers?.length}</p>
             </button>
         </div>
     )

@@ -38,7 +38,7 @@ const Tags = () => {
         <div className='flex flex-col items-start gap-[5px] select-none'>
             <p className='font-jost font-bold text-xs'>TAGS</p>
             <div className='flex flex-wrap gap-[10px]'>
-                {Tags.map(tag => <TagItem key={tag.id} filterTodos={filterTodos} tag={tag}/>)}
+                {Tags?.map(tag => <TagItem key={tag.id} filterTodos={filterTodos} tag={tag}/>)}
                 <button className='flex items-center justify-start h-7 px-[10px] rounded gap-[10px] hover:bg-listHover'>
                     <AddIcon/>
                     <p className='text-xs'>Add Tag</p>

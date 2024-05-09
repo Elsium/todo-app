@@ -35,28 +35,28 @@ export const getListData = createAsyncThunk(
     'data/getListData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-lists.json', accessToken})
-        dispatch(loadLists(data.lists))
+        dispatch(loadLists(JSON.parse(data)))
     }
 )
 export const getTagData = createAsyncThunk(
     'data/getTagData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-tags.json', accessToken})
-        dispatch(loadTags(data.tags))
+        dispatch(loadTags(JSON.parse(data)))
     }
 )
 export const getTodoData = createAsyncThunk(
     'data/getTodoData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-todos.json', accessToken})
-        dispatch(loadTodos(data.todos))
+        dispatch(loadTodos(JSON.parse(data)))
     }
 )
 export const getStickerData = createAsyncThunk(
     'data/getStickerData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-stickers.json', accessToken})
-        dispatch(loadStickers(data.stickers))
+        dispatch(loadStickers(JSON.parse(data)))
     }
 )
 

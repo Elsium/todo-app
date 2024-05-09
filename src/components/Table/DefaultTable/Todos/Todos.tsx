@@ -11,7 +11,7 @@ interface PropsType {
 const Todos = ({todos, openTask}: PropsType) => {
     return (
         <ol>
-            {todos.map(todo => <TodoItem key={todo.id} todo={todo} openTask={openTask}/>)}
+            {todos?.map(todo => <TodoItem key={todo.id} todo={todo} openTask={openTask}/>)}
         </ol>
     )
 }

@@ -6,7 +6,7 @@ import {Todo} from '@/redux/Features/todosSlice'
 import {Sticker} from '@/redux/Features/stickersSlice'
 
 export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], filename: string, accessToken: string) => {
-    const fileId = getFileIdByName(filename, accessToken)
+    const fileId = await getFileIdByName(filename, accessToken)
     const fileMetadata = {
         name: filename,
         mimeType: 'application/json',
@@ -19,7 +19,7 @@ export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], fi
     try {
         if (fileId) {
             const url = `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`
-            const response = await axios.post(url, media.body, {
+            const response = await axios.patch(url, media.body, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json',
