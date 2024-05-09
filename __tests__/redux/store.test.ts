@@ -1,8 +1,8 @@
-import { store } from '@/app/redux/store'
-import { addTodo, deleteTodo } from '@/app/redux/Features/todosSlice'
-import { addSticker, deleteSticker } from '@/app/redux/Features/stickersSlice'
-import { addList, deleteList } from "@/app/redux/Features/listsSlice"
-import { addTag, deleteTag } from "@/app/redux/Features/tagsSlice"
+import { store } from '@/redux/store'
+import { addTodo, deleteTodo } from '@/redux/Features/todosSlice'
+import { addSticker, deleteSticker } from '@/redux/Features/stickersSlice'
+import { addList, deleteList } from "@/redux/Features/listsSlice"
+import { addTag, deleteTag } from "@/redux/Features/tagsSlice"
 
 describe('store', () => {
     it('should dispatch actions for todosSlice', () => {

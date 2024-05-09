@@ -5,7 +5,7 @@ import todosReducer, {
     editTodo,
     toggleSubtaskCompleted,
     toggleTodoCompleted
-} from '@/app/redux/Features/todosSlice'
+} from '@/redux/Features/todosSlice'
 
 describe('todosReducer', () => {
     const initialState = {

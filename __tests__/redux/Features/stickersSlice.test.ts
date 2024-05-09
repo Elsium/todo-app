@@ -1,4 +1,4 @@
-import stickersReducer, { addSticker, deleteSticker, editSticker } from '@/app/redux/Features/stickersSlice'
+import stickersReducer, { addSticker, deleteSticker, editSticker } from '@/redux/Features/stickersSlice'
 
 describe('stickersReducer', () => {
     const initialState = {

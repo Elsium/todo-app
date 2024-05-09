@@ -1,4 +1,4 @@
-import tagsReducer, { addTag, deleteTag } from '@/app/redux/Features/tagsSlice'
+import tagsReducer, { addTag, deleteTag } from '@/redux/Features/tagsSlice'
 
 describe('tagsReducer', () => {
     const initialState = {

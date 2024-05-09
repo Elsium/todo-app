@@ -1,4 +1,4 @@
-import listsReducer, { addList, deleteList } from '@/app/redux/Features/listsSlice'
+import listsReducer, { addList, deleteList } from '@/redux/Features/listsSlice'
 
 describe('listsReducer', () => {
     const initialState = {
