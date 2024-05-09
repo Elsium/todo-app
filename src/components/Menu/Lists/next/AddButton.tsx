@@ -44,7 +44,7 @@ const AddButton = () => {
                     {openPicker && <ChromePicker className="absolute top-[30px] left-[5px]" color={color} onChangeComplete={(picker) => {
                         setColor(picker.hex)
                     }}/>}
-                    <input onChange={formik.handleChange}
+                    <input autoFocus onChange={formik.handleChange}
                         name="name"
                         value={formik.values.name}
                         type="text"

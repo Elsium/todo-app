@@ -21,6 +21,7 @@ const DefaultTable = ({openTask}: PropsType) => {
     const searchParams = useSearchParams()
     const queryList = searchParams.get('list')
     const queryTag = searchParams.get('tag')
+    const queryTitle = searchParams.get('title')
 
     if (queryList) {
         todos = todos.filter(todo => todo.list === Number(queryList))
@@ -29,6 +30,10 @@ const DefaultTable = ({openTask}: PropsType) => {
     else if (queryTag) {
         todos = todos.filter(todo => todo.tags.includes(Number(queryTag)))
         title = tags[tags.findIndex(tag => tag.id === Number(queryTag))].name
+    }
+    else if (queryTitle) {
+        todos = todos.filter(todo => todo.title.includes(queryTitle))
+        title = queryTitle
     }
 
     return (
