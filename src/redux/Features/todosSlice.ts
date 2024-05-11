@@ -150,4 +150,7 @@ const todosSlice = createSlice({
         }
     }
 })
+
+export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, loadTodos} = todosSlice.actions
+
 export default todosSlice.reducer
