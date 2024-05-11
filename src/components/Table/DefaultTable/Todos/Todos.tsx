@@ -10,8 +10,8 @@ interface PropsType {
 
 const Todos = ({todos, openTask}: PropsType) => {
     return (
-        <ol>
-            {todos?.map(todo => <TodoItem key={todo.id} todo={todo} openTask={openTask}/>)}
+        <ol className='flex flex-col gap-[10px] py-[20px]'>
+            {todos?.map((todo, index) => <TodoItem key={todo.id} index={index} length={todos.length} todo={todo} openTask={openTask}/>)}
         </ol>
     )
 }
