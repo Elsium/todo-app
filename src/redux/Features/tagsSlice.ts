@@ -20,14 +20,20 @@ export const addTagAndUpload = createAsyncThunk(
             name,
             color
         }
-
         dispatch(addTag(newTag))
 
         const updatedTags = (getState() as RootState).tagData.tags
-
         await dispatch(uploadTagData({state: updatedTags, accessToken}))
+    }
+)
 
-        return newTag
+export const deleteTagAndUpload = createAsyncThunk(
+    'tags/deleteTagAndUpload',
+    async ({id, accessToken}: {id: number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(deleteTag(id))
+
+        const updatedTags = (getState() as RootState).tagData.tags
+        await dispatch(uploadTagData({state: updatedTags, accessToken}))
     }
 )
 

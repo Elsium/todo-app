@@ -20,14 +20,20 @@ export const addListAndUpload = createAsyncThunk(
             name,
             color
         }
-
         dispatch(addList(newList))
 
         const updatedLists = (getState() as RootState).listData.lists
-
         await dispatch(uploadListData({state: updatedLists, accessToken}))
+    }
+)
 
-        return newList
+export const deleteListAndUpload = createAsyncThunk(
+    'lists/deleteListAndUpload',
+    async ({id, accessToken}: {id: number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(deleteList(id))
+
+        const updatedLists = (getState() as RootState).listData.lists
+        await dispatch(uploadListData({state: updatedLists, accessToken}))
     }
 )
 
