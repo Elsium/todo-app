@@ -83,8 +83,8 @@ export const getStickerData = createAsyncThunk(
 export const getAllData = createAsyncThunk(
     'data/getAllData',
     async(accessToken: string, {dispatch}) => {
-        dispatch(getListData(accessToken))
-        dispatch(getTagData(accessToken))
+        await dispatch(getListData(accessToken))
+        await dispatch(getTagData(accessToken))
         dispatch(getTodoData(accessToken))
         dispatch(getStickerData(accessToken))
     }

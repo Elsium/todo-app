@@ -8,12 +8,12 @@ import Session from '@/HOC/Session'
 import {useState} from 'react'
 import {ITodo} from '@/redux/Features/todosSlice'
 
-
 export default function Work() {
 
     const [task, setTask] = useState<ITodo | null>(null)
 
     const openTask = (todo: ITodo) => {
+        if (task !== null) setTask(null)
         setTask(todo)
     }
     const closeTask = () => {

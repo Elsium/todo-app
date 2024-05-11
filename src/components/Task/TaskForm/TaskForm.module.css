@@ -1,0 +1,13 @@
+.title {
+    @apply rounded border border-gray-300 p-[10px] w-full bg-inherit focus:outline-none placeholder:select-none overflow-auto;
+}
+
+.title::-webkit-scrollbar { width: 0; }
+
+.optional {
+    @apply rounded border border-gray-300 p-[10px] w-3/4 bg-inherit focus:outline-none placeholder:select-none;
+}
+
+.select {
+    @apply w-full flex justify-between items-center
+}

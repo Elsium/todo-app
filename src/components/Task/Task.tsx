@@ -1,5 +1,5 @@
 import Title from '@/components/UI/Title'
-import TaskForm from '@/components/Task/next/TaskForm'
+import TaskForm from '@/components/Task/TaskForm/TaskForm'
 import SubtaskForm from '@/components/Task/next/SubtaskForm'
 import CloseIcon from '@mui/icons-material/Close'
 import TaskAdditional from '@/components/Task/next/TaskAdditional'
