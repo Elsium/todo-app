@@ -19,7 +19,7 @@ const Task = ({todo, closeTask}: PropsType) => {
                 <Title title={'SubTasks:'} Icon={null}/>
                 <SubtaskForm subtasks={todo.subtasks}/>
             </div>
-            <TaskAdditional/>
+            <TaskAdditional todo={todo} closeTask={closeTask}/>
         </div>
     )
 }
