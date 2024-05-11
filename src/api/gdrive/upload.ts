@@ -1,12 +1,12 @@
 import axios from 'axios'
-import {getFileIdByName} from '@/api/gdrive/getFileIdByName'
 import {List} from '@/redux/Features/listsSlice'
 import {Tag} from '@/redux/Features/tagsSlice'
 import {Todo} from '@/redux/Features/todosSlice'
 import {Sticker} from '@/redux/Features/stickersSlice'
+import {checkIfFileExists} from '@/api/gdrive/checkIfFileExists'
 
 export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], filename: string, accessToken: string) => {
-    const fileId = await getFileIdByName(filename, accessToken)
+    const isFile = await checkIfFileExists(filename, accessToken)
     const fileMetadata = {
         name: filename,
         mimeType: 'application/json',
@@ -17,8 +17,8 @@ export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], fi
     }
 
     try {
-        if (fileId) {
-            const url = `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`
+        if (isFile) {
+            const url = `https://www.googleapis.com/upload/drive/v3/files/${isFile[0].id}?uploadType=media`
             const response = await axios.patch(url, media.body, {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
