@@ -10,7 +10,7 @@ interface ComponentProps {
 const TagItem = ({tag, filterTodos}: ComponentProps) => {
 
     return (
-        <button onClick={() => filterTodos(tag.id.toString())} style={{background: tag.color}} className='h-7 px-[15px] rounded text-xs text-center hover:opacity-70'>
+        <button onClick={() => filterTodos(tag.name)} style={{background: tag.color}} className='h-7 px-[15px] rounded text-xs text-center hover:opacity-70'>
             <p>{tag.name}</p>
         </button>
     )

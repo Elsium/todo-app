@@ -10,7 +10,7 @@ interface ComponentProps {
 const ListItem = ({list, count, filterTodos}: ComponentProps) => {
 
     return (
-        <button onClick={() => filterTodos(list.id.toString())} className={s.btn}>
+        <button onClick={() => filterTodos(list.name)} className={s.btn}>
             <div>
                 <div style={{background: list.color}}/>
                 <p>{list.name}</p>

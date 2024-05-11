@@ -35,28 +35,48 @@ export const getListData = createAsyncThunk(
     'data/getListData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-lists.json', accessToken})
-        dispatch(loadLists(JSON.parse(data)))
+        if(data === null) return
+        if(typeof data === 'string') {
+            dispatch(loadLists(JSON.parse(data)))
+            return
+        }
+        dispatch(loadLists(data))
     }
 )
 export const getTagData = createAsyncThunk(
     'data/getTagData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-tags.json', accessToken})
-        dispatch(loadTags(JSON.parse(data)))
+        if(data === null) return
+        if(typeof data === 'string') {
+            dispatch(loadTags(JSON.parse(data)))
+            return
+        }
+        dispatch(loadTags(data))
     }
 )
 export const getTodoData = createAsyncThunk(
     'data/getTodoData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-todos.json', accessToken})
-        dispatch(loadTodos(JSON.parse(data)))
+        if(data === null) return
+        if(typeof data === 'string') {
+            dispatch(loadTodos(JSON.parse(data)))
+            return
+        }
+        dispatch(loadTodos(data))
     }
 )
 export const getStickerData = createAsyncThunk(
     'data/getStickerData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-stickers.json', accessToken})
-        dispatch(loadStickers(JSON.parse(data)))
+        if(data === null) return
+        if(typeof data === 'string') {
+            dispatch(loadStickers(JSON.parse(data)))
+            return
+        }
+        dispatch(loadStickers(data))
     }
 )
 

@@ -24,16 +24,22 @@ const DefaultTable = ({openTask}: PropsType) => {
     const queryTitle = searchParams.get('title')
 
     if (queryList) {
-        todos = todos.filter(todo => todo.list === Number(queryList))
-        title = lists[lists.findIndex(list => list.id === Number(queryList))].name
+        const index = lists.findIndex(list => list.name === queryList)
+        if(index !== -1) {
+            title = lists[index].name
+            todos = todos.filter(todo => todo.list === lists[index].id)
+        }
     }
-    else if (queryTag) {
-        todos = todos.filter(todo => todo.tags.includes(Number(queryTag)))
-        title = tags[tags.findIndex(tag => tag.id === Number(queryTag))].name
+    if (queryTag) {
+        const index = tags.findIndex(tag => tag.name === queryTag)
+        if(index !== -1) {
+            title = tags[index].name
+            todos = todos.filter(todo => todo.tags.includes(tags[index].id))
+        }
     }
-    else if (queryTitle) {
-        todos = todos.filter(todo => todo.title.includes(queryTitle))
+    if (queryTitle) {
         title = queryTitle
+        todos = todos.filter(todo => todo.title.includes(queryTitle))
     }
 
     return (
