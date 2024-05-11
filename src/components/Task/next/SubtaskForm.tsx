@@ -1,7 +1,7 @@
-import {Subtask} from '@/redux/Features/todosSlice'
+import {ISubtask} from '@/redux/Features/todosSlice'
 
 interface PropsType {
-    subtasks: Subtask[]
+    subtasks: ISubtask[]
 }
 
 const SubtaskForm = ({subtasks}: PropsType) => {

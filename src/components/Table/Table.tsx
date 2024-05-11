@@ -1,11 +1,11 @@
 import DefaultTable from '@/components/Table/DefaultTable/DefaultTable'
 import Sticky from '@/components/Table/next/Sticky'
 import Upcoming from '@/components/Table/next/Upcoming'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 import {Suspense} from 'react'
 
 interface PropsType {
-    openTask: (task: Todo) => void
+    openTask: (task: ITodo) => void
 }
 
 const Table = ({openTask}: PropsType) => {

@@ -2,14 +2,14 @@
 
 import TableTitle from '@/components/UI/TableTitle'
 import Todos from '@/components/Table/DefaultTable/Todos/Todos'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
 import {useSearchParams} from 'next/navigation'
 import AddTodoForm from '@/components/Table/DefaultTable/next/AddTodoForm'
 
 interface PropsType {
-    openTask: (task: Todo) => void
+    openTask: (task: ITodo) => void
 }
 
 const DefaultTable = ({openTask}: PropsType) => {

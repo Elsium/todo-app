@@ -2,11 +2,11 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '@/redux/store'
 import {uploadStickerData} from '@/redux/Thunks/googleThunk'
 
-interface StickersState {
-    stickers: Sticker[]
+interface IStickersState {
+    stickers: ISticker[]
 }
 
-export interface Sticker {
+export interface ISticker {
     id: number
     title: string
     description: string | null
@@ -15,7 +15,7 @@ export interface Sticker {
 export const addStickerAndUpload = createAsyncThunk(
     'stickers/addStickerAndUpload',
     async ({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
-        const newSticker: Sticker = {
+        const newSticker: ISticker = {
             id: Date.now(),
             title,
             description: null
@@ -31,7 +31,7 @@ export const addStickerAndUpload = createAsyncThunk(
     }
 )
 
-const initialState: StickersState = {
+const initialState: IStickersState = {
     stickers: []
 }
 
@@ -39,20 +39,20 @@ const StickersSlice = createSlice({
     name: 'stickers',
     initialState,
     reducers: {
-        addSticker: (state, action: PayloadAction<Sticker>) => {
+        addSticker: (state, action: PayloadAction<ISticker>) => {
             state.stickers.push(action.payload)
         },
         deleteSticker: (state, action: PayloadAction<number>) => {
             state.stickers = state.stickers.filter(sticker => sticker.id !== action.payload)
         },
-        editSticker: (state, action: PayloadAction<{id: number, sticker: Partial<Sticker>}>) => {
+        editSticker: (state, action: PayloadAction<{id: number, sticker: Partial<ISticker>}>) => {
             const {id, sticker} = action.payload
             const existingSticker = state.stickers.find(sticker => sticker.id === id)
             if(existingSticker) {
                 Object.assign(existingSticker, sticker)
             }
         },
-        loadStickers: (state, action: PayloadAction<Sticker[]>) => {
+        loadStickers: (state, action: PayloadAction<ISticker[]>) => {
             state.stickers = action.payload
         }
     }

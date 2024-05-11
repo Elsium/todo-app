@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
 import TodoItem from '@/components/Table/DefaultTable/Todos/TodoItem/TodoItem'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {
-    todos: Todo[]
-    openTask: (task: Todo) => void
+    todos: ITodo[]
+    openTask: (task: ITodo) => void
 }
 
 const Todos = ({todos, openTask}: PropsType) => {

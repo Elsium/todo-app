@@ -2,11 +2,11 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '@/redux/store'
 import {uploadTagData} from '@/redux/Thunks/googleThunk'
 
-interface TagsState {
-    tags: Tag[]
+interface ITagsState {
+    tags: ITag[]
 }
 
-export interface Tag {
+export interface ITag {
     id: number
     name: string
     color: string
@@ -15,7 +15,7 @@ export interface Tag {
 export const addTagAndUpload = createAsyncThunk(
     'tags/addTagAndUpload',
     async ({name, color, accessToken}: {name: string, color: string, accessToken: string}, {getState, dispatch}) => {
-        const newTag: Tag = {
+        const newTag: ITag = {
             id: Date.now(),
             name,
             color
@@ -31,7 +31,7 @@ export const addTagAndUpload = createAsyncThunk(
     }
 )
 
-const initialState: TagsState = {
+const initialState: ITagsState = {
     tags: []
 }
 
@@ -39,13 +39,13 @@ const TagsSlice = createSlice({
     name: 'tags',
     initialState,
     reducers: {
-        addTag: (state, action: PayloadAction<Tag>) => {
+        addTag: (state, action: PayloadAction<ITag>) => {
             state.tags.push(action.payload)
         },
         deleteTag: (state, action: PayloadAction<number>) => {
             state.tags = state.tags.filter(tags => tags.id !== action.payload)
         },
-        loadTags: (state, action: PayloadAction<Tag[]>) => {
+        loadTags: (state, action: PayloadAction<ITag[]>) => {
             state.tags = action.payload
         }
     }

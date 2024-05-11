@@ -1,32 +1,32 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import {uploadState} from '@/api/gdrive/upload'
 import {getState} from '@/api/gdrive/get'
-import {List, loadLists} from '@/redux/Features/listsSlice'
-import {Tag, loadTags} from '@/redux/Features/tagsSlice'
-import {Todo, loadTodos} from '@/redux/Features/todosSlice'
-import {Sticker, loadStickers} from '@/redux/Features/stickersSlice'
+import {IList, loadLists} from '@/redux/Features/listsSlice'
+import {ITag, loadTags} from '@/redux/Features/tagsSlice'
+import {ITodo, loadTodos} from '@/redux/Features/todosSlice'
+import {ISticker, loadStickers} from '@/redux/Features/stickersSlice'
 
 export const uploadListData = createAsyncThunk(
     'data/uploadListData',
-    async ({state, accessToken}: {state: List[], accessToken: string}) => {
+    async ({state, accessToken}: {state: IList[], accessToken: string}) => {
         await uploadState(state, 'TaskZen-lists.json', accessToken)
     }
 )
 export const uploadTagData = createAsyncThunk(
     'data/uploadTagData',
-    async ({state, accessToken}: {state: Tag[], accessToken: string}) => {
+    async ({state, accessToken}: {state: ITag[], accessToken: string}) => {
         await uploadState(state, 'TaskZen-tags.json', accessToken)
     }
 )
 export const uploadTodoData = createAsyncThunk(
     'data/uploadTodoData',
-    async ({state, accessToken}: {state: Todo[], accessToken: string}) => {
+    async ({state, accessToken}: {state: ITodo[], accessToken: string}) => {
         await uploadState(state, 'TaskZen-todos.json', accessToken)
     }
 )
 export const uploadStickerData = createAsyncThunk(
     'data/uploadStickerData',
-    async ({state, accessToken}: {state: Sticker[], accessToken: string}) => {
+    async ({state, accessToken}: {state: ISticker[], accessToken: string}) => {
         await uploadState(state, 'TaskZen-stickers.json', accessToken)
     }
 )

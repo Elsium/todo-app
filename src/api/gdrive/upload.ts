@@ -1,11 +1,11 @@
 import axios from 'axios'
-import {List} from '@/redux/Features/listsSlice'
-import {Tag} from '@/redux/Features/tagsSlice'
-import {Todo} from '@/redux/Features/todosSlice'
-import {Sticker} from '@/redux/Features/stickersSlice'
+import {IList} from '@/redux/Features/listsSlice'
+import {ITag} from '@/redux/Features/tagsSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
+import {ISticker} from '@/redux/Features/stickersSlice'
 import {checkIfFileExists} from '@/api/gdrive/checkIfFileExists'
 
-export const uploadState = async (state: List[] | Tag[] | Todo[] | Sticker[], filename: string, accessToken: string) => {
+export const uploadState = async (state: IList[] | ITag[] | ITodo[] | ISticker[], filename: string, accessToken: string) => {
     const isFile = await checkIfFileExists(filename, accessToken)
     const fileMetadata = {
         name: filename,

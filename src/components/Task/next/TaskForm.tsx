@@ -1,7 +1,7 @@
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {
-    todo: Todo
+    todo: ITodo
 }
 
 const TaskForm = ({todo}: PropsType) => {

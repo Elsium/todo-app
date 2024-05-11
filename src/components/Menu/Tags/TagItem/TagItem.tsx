@@ -1,9 +1,9 @@
 'use client'
 
-import {Tag} from '@/redux/Features/tagsSlice'
+import {ITag} from '@/redux/Features/tagsSlice'
 
 interface ComponentProps {
-    tag: Tag
+    tag: ITag
     filterTodos: (tag: string | undefined) => void
 }
 

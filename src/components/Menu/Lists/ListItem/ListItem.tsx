@@ -1,8 +1,8 @@
 import s from './ListItem.module.css'
-import {List} from '@/redux/Features/listsSlice'
+import {IList} from '@/redux/Features/listsSlice'
 
 interface ComponentProps {
-    list: List
+    list: IList
     count: number
     filterTodos: (list: string | undefined) => void
 }

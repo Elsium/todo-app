@@ -3,10 +3,10 @@ import TaskForm from '@/components/Task/next/TaskForm'
 import SubtaskForm from '@/components/Task/next/SubtaskForm'
 import CloseIcon from '@mui/icons-material/Close'
 import TaskAdditional from '@/components/Task/next/TaskAdditional'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {
-    todo: Todo
+    todo: ITodo
     closeTask: () => void
 }
 

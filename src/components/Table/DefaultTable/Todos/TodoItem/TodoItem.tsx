@@ -2,11 +2,11 @@
 
 import React from 'react'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {
-    todo: Todo
-    openTask: (task: Todo) => void
+    todo: ITodo
+    openTask: (task: ITodo) => void
 }
 
 const TodoItem = ({todo, openTask}: PropsType) => {

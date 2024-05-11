@@ -2,11 +2,11 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '@/redux/store'
 import {uploadListData} from '@/redux/Thunks/googleThunk'
 
-interface ListsState {
-    lists: List[]
+interface IListsState {
+    lists: IList[]
 }
 
-export interface List {
+export interface IList {
     id: number
     name: string
     color: string
@@ -15,7 +15,7 @@ export interface List {
 export const addListAndUpload = createAsyncThunk(
     'lists/addListAndUpload',
     async ({name, color, accessToken}: {name: string, color: string, accessToken: string}, {getState, dispatch}) => {
-        const newList: List = {
+        const newList: IList = {
             id: Date.now(),
             name,
             color
@@ -31,7 +31,7 @@ export const addListAndUpload = createAsyncThunk(
     }
 )
 
-const initialState: ListsState = {
+const initialState: IListsState = {
     lists: []
 }
 
@@ -39,13 +39,13 @@ const ListsSlice = createSlice({
     name: 'lists',
     initialState,
     reducers: {
-        addList: (state, action: PayloadAction<List>) => {
+        addList: (state, action: PayloadAction<IList>) => {
             state.lists.push(action.payload)
         },
         deleteList: (state, action: PayloadAction<number>) => {
             state.lists = state.lists.filter(lists => lists.id !== action.payload)
         },
-        loadLists: (state, action: PayloadAction<List[]>) => {
+        loadLists: (state, action: PayloadAction<IList[]>) => {
             state.lists = action.payload
         }
     }

@@ -6,14 +6,14 @@ import Table from '@/components/Table/Table'
 import {SessionProvider} from 'next-auth/react'
 import Session from '@/HOC/Session'
 import {useState} from 'react'
-import {Todo} from '@/redux/Features/todosSlice'
+import {ITodo} from '@/redux/Features/todosSlice'
 
 
 export default function Work() {
 
-    const [task, setTask] = useState<Todo | null>(null)
+    const [task, setTask] = useState<ITodo | null>(null)
 
-    const openTask = (todo: Todo) => {
+    const openTask = (todo: ITodo) => {
         setTask(todo)
     }
     const closeTask = () => {

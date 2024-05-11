@@ -2,22 +2,22 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {uploadTodoData} from '@/redux/Thunks/googleThunk'
 import {RootState} from '@/redux/store'
 
-interface TodosState {
-    todos: Todo[]
+interface ITodosState {
+    todos: ITodo[]
 }
 
-export interface Todo {
+export interface ITodo {
     id: number
     title: string
     description: string | null
     list: number | null
     dueDate: Date | null
     tags: number[]
-    subtasks: Subtask[]
+    subtasks: ISubtask[]
     completed: boolean
 }
 
-export interface Subtask {
+export interface ISubtask {
     id: number
     title: string
     completed: boolean
@@ -26,7 +26,7 @@ export interface Subtask {
 export const addTodoAndUpload = createAsyncThunk(
     'todos/addTodoAndUpload',
     async({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
-        const newTodo: Todo = {
+        const newTodo: ITodo = {
             id: Date.now(),
             title,
             description: null,
@@ -47,7 +47,7 @@ export const addTodoAndUpload = createAsyncThunk(
     }
 )
 
-const initialState: TodosState = {
+const initialState: ITodosState = {
     todos: []
 }
 
@@ -55,13 +55,13 @@ const todosSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-        addTodo: (state, action: PayloadAction<Todo>) => {
+        addTodo: (state, action: PayloadAction<ITodo>) => {
             state.todos.push(action.payload)
         },
         deleteTodo: (state, action: PayloadAction<number>) => {
             state.todos = state.todos.filter(todo => todo.id !== action.payload)
         },
-        editTodo: (state, action: PayloadAction<{id: number, todo: Partial<Todo>}>) => {
+        editTodo: (state, action: PayloadAction<{id: number, todo: Partial<ITodo>}>) => {
             const {id, todo} = action.payload
             const existingTodo = state.todos.find(todo => todo.id === id)
             if(existingTodo) {
@@ -82,7 +82,7 @@ const todosSlice = createSlice({
                 subtask.completed = !subtask.completed
             }
         },
-        addSubtask: (state, action: PayloadAction<{todoId: number, subtask: Subtask}>) => {
+        addSubtask: (state, action: PayloadAction<{todoId: number, subtask: ISubtask}>) => {
             const { todoId, subtask } = action.payload
             const todo = state.todos.find(todo => todo.id === todoId)
             if (todo) {
@@ -96,7 +96,7 @@ const todosSlice = createSlice({
                 todo.subtasks = todo.subtasks.filter(s => s.id !== subtaskId)
             }
         },
-        loadTodos: (state, action: PayloadAction<Todo[]>) => {
+        loadTodos: (state, action: PayloadAction<ITodo[]>) => {
             state.todos = action.payload
         }
     }
