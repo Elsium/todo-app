@@ -36,14 +36,64 @@ export const addTodoAndUpload = createAsyncThunk(
             subtasks: [],
             completed: false,
         }
-
         dispatch(addTodo(newTodo))
 
         const updatedTodos = (getState() as RootState).todoData.todos
-
         await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const editTodoAndUpload = createAsyncThunk(
+    'todos/editTodoAndUpload',
+    async({todo, accessToken}: {todo:ITodo, accessToken: string}, {getState, dispatch}) => {
+        dispatch(editTodo(todo))
 
-        return newTodo
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const toggleTodoCompletedAndUpload = createAsyncThunk(
+    'todos/toggleTodoCompletedAndUpload',
+    async({id, accessToken}: {id:number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(toggleTodoCompleted(id))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const deleteTodoAndUpload = createAsyncThunk(
+    'todos/deleteTodoAndUpload',
+    async({id, accessToken}: {id:number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(deleteTodo(id))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const toggleSubtaskCompletedAndUpload = createAsyncThunk(
+    'todos/toggleSubtaskCompletedAndUpload',
+    async({todoId, subtaskId, accessToken}: {todoId:number, subtaskId:number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(toggleSubtaskCompleted({todoId, subtaskId}))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const addSubtaskAndUpload = createAsyncThunk(
+    'todos/addSubtaskAndUpload',
+    async({todoId, subtask, accessToken}: {todoId: number, subtask: ISubtask, accessToken: string}, {getState, dispatch}) => {
+        dispatch(addSubtask({todoId, subtask}))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+export const deleteSubtaskAndUpload = createAsyncThunk(
+    'todos/deleteSubtaskAndUpload',
+    async({todoId, subtaskId, accessToken}: {todoId: number, subtaskId: number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(deleteSubtask({todoId, subtaskId}))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
     }
 )
 
@@ -61,11 +111,10 @@ const todosSlice = createSlice({
         deleteTodo: (state, action: PayloadAction<number>) => {
             state.todos = state.todos.filter(todo => todo.id !== action.payload)
         },
-        editTodo: (state, action: PayloadAction<{id: number, todo: Partial<ITodo>}>) => {
-            const {id, todo} = action.payload
-            const existingTodo = state.todos.find(todo => todo.id === id)
+        editTodo: (state, action: PayloadAction<ITodo>) => {
+            const existingTodo = state.todos.find(t => t.id === action.payload.id)
             if(existingTodo) {
-                Object.assign(existingTodo, todo)
+                Object.assign(existingTodo, action.payload)
             }
         },
         toggleTodoCompleted: (state, action: PayloadAction<number>) => {
