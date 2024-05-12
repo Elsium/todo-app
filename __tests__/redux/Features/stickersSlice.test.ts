@@ -1,4 +1,4 @@
-import stickersReducer, { addSticker, deleteSticker, editSticker } from '@/redux/Features/stickersSlice'
+import stickersReducer, {addSticker, deleteSticker, editSticker, loadStickers} from '@/redux/Features/stickersSlice'
 
 describe('stickersReducer', () => {
     const initialState = {
@@ -26,11 +26,23 @@ describe('stickersReducer', () => {
         const existingState = {
             stickers: [{ id: 1, title: 'Test Sticker', description: '' }],
         }
-        const updatedSticker = { description: 'Updated Description' }
-        const action = { type: editSticker.type, payload: { id: 1, sticker: updatedSticker } }
+        const updatedSticker = { id: 1, title: 'Test Sticker', description: 'Updated Description' }
+        const action = { type: editSticker.type, payload: updatedSticker }
         const expectedState = {
-            stickers: [{ ...existingState.stickers[0], ...updatedSticker }],
+            stickers: [updatedSticker],
         }
         expect(stickersReducer(existingState, action)).toEqual(expectedState)
+    })
+
+    it('should handle loadStickers', () => {
+        const stickersToLoad = [
+            { id: 1, title: 'First Sticker', description: 'Description 1' },
+            { id: 2, title: 'Second Sticker', description: 'Description 2' }
+        ]
+        const action = { type: loadStickers.type, payload: stickersToLoad }
+        const expectedState = {
+            stickers: stickersToLoad,
+        }
+        expect(stickersReducer(initialState, action)).toEqual(expectedState)
     })
 })

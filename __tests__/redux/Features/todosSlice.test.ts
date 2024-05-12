@@ -2,7 +2,7 @@ import todosReducer, {
     addSubtask,
     addTodo, deleteSubtask,
     deleteTodo,
-    editTodo,
+    editTodo, loadTodos,
     toggleSubtaskCompleted,
     toggleTodoCompleted
 } from '@/redux/Features/todosSlice'
@@ -39,10 +39,10 @@ describe('todosReducer', () => {
         const existingState = {
             todos: [{ id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
         }
-        const updatedTodo = { title: 'Updated TodoItem' }
-        const action = { type: editTodo.type, payload: { id: 1, todo: updatedTodo } }
+        const updatedTodo = { id: 1, title: 'Updated TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }
+        const action = { type: editTodo.type, payload: updatedTodo }
         const expectedState = {
-            todos: [{ ...existingState.todos[0], ...updatedTodo }],
+            todos: [updatedTodo],
         }
         expect(todosReducer(existingState, action)).toEqual(expectedState)
     })
@@ -76,5 +76,17 @@ describe('todosReducer', () => {
         state = todosReducer(state, addSubtask({ todoId: todo.id, subtask }))
         state = todosReducer(state, deleteSubtask({ todoId: todo.id, subtaskId: subtask.id }))
         expect(state.todos[0].subtasks).toHaveLength(0)
+    })
+
+    it('should handle loadTodos', () => {
+        const todosToLoad = [
+            { id: 1, title: 'Loaded TodoItem 1', description: 'Description 1', list: null, dueDate: null, tags: [], subtasks: [], completed: false },
+            { id: 2, title: 'Loaded TodoItem 2', description: 'Description 2', list: null, dueDate: null, tags: [], subtasks: [], completed: false }
+        ]
+        const action = { type: loadTodos.type, payload: todosToLoad }
+        const expectedState = {
+            todos: todosToLoad,
+        }
+        expect(todosReducer(initialState, action)).toEqual(expectedState)
     })
 })
