@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import { signOut } from 'next-auth/react'
 

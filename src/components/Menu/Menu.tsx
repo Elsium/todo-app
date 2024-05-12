@@ -1,5 +1,6 @@
 'use client'
 
+import React, {Suspense, useState} from 'react'
 import MenuAdditional from '@/components/Menu/next/MenuAdditional'
 import Title from '@/components/UI/Title'
 import Search from '@/components/Menu/next/Search'
@@ -7,7 +8,6 @@ import MenuTasks from '@/components/Menu/next/MenuTasks/MenuTasks'
 import Lists from '@/components/Menu/Lists/Lists'
 import Tags from '@/components/Menu/Tags/Tags'
 import MenuIcon from '@mui/icons-material/Menu'
-import {Suspense, useState} from 'react'
 
 const Menu = () => {
 

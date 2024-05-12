@@ -1,11 +1,11 @@
 'use client'
 
+import React, {useCallback} from 'react'
 import TagItem from './TagItem/TagItem'
 import AddIcon from '@mui/icons-material/Add'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import {useCallback} from 'react'
 
 const Tags = () => {
     const Tags = useSelector((state: RootState) => state.tagData.tags)

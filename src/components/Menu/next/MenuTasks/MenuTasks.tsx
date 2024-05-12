@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import s from './MenuTasks.module.css'
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl'

@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import {ITag} from '@/redux/Features/tagsSlice'
 
 interface ComponentProps {

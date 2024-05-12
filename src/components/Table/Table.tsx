@@ -1,3 +1,4 @@
+import React from 'react'
 import DefaultTable from '@/components/Table/DefaultTable/DefaultTable'
 import Sticky from '@/components/Table/next/Sticky'
 import Upcoming from '@/components/Table/next/Upcoming'
