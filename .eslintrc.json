@@ -4,8 +4,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    "no-unused-vars": "warn",
-    "no-console": "warn",
+    "no-unused-vars": "off",
     "eqeqeq": "error",
     "indent": ["error", 4],
     "semi": ["error", "never"],

@@ -9,7 +9,7 @@ import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 const Tags = () => {
     const Tags = useSelector((state: RootState) => state.tagData.tags)
-    const todos = useSelector((state: RootState) => state.todoData.todos)
+    // const todos = useSelector((state: RootState) => state.todoData.todos)
 
     const router = useRouter()
     const pathname = usePathname()
