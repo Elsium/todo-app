@@ -18,7 +18,7 @@ const Session = ({children}:{children: React.ReactNode}) => {
             dispatch(signInSuccess(session.user))
             dispatch(getAllData(session.accessToken))
         }
-    }, [isAuth, session, dispatch])
+    }, [isAuth, session, dispatch, router])
 
     return (
         <>

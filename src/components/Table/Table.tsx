@@ -1,9 +1,8 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import DefaultTable from '@/components/Table/DefaultTable/DefaultTable'
 import Sticky from '@/components/Table/next/Sticky'
 import Upcoming from '@/components/Table/next/Upcoming'
 import {ITodo} from '@/redux/Features/todosSlice'
-import {Suspense} from 'react'
 
 interface PropsType {
     openTask: (task: ITodo) => void

@@ -18,7 +18,7 @@ const Search = () => {
 
             return params.toString()
         },
-        [searchParams]
+        []
     )
 
     const filterTodos = (title: string | undefined) => {

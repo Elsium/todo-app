@@ -22,7 +22,7 @@ const Tags = () => {
 
             return params.toString()
         },
-        [searchParams]
+        []
     )
 
     const filterTodos = (tag: string | undefined) => {

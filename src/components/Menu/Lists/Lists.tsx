@@ -24,7 +24,7 @@ const Lists = () => {
 
             return params.toString()
         },
-        [searchParams]
+        []
     )
 
     const filterTodos = (list: string | undefined) => {
