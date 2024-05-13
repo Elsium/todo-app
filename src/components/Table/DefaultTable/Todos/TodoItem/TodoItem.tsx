@@ -36,7 +36,10 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                         </p>
                         <div className='flex justify-start items-center gap-[10px] font-jost'>
                             {todo.dueDate && <p>date</p>}
-                            {todo.list && <p>list</p>}
+                            {todo.list && <div className='flex items-center gap-[5px]'>
+                                <div className='rounded w-[13px] h-[13px]' style={{background: lists.find(l => l.name === todo.list)?.color}}/>
+                                <p>{todo.list}</p>
+                            </div>}
                             {todo.subtasks.length > 0 && <p>subtasks count</p>}
                             {todo.tags.length > 0 && <p>tags</p>}
                         </div>

@@ -10,7 +10,7 @@ export interface ITodo {
     id: number
     title: string
     description: string | null
-    list: number | null
+    list: string | null
     dueDate: Date | null
     tags: number[]
     subtasks: ISubtask[]
@@ -44,7 +44,7 @@ export const addTodoAndUpload = createAsyncThunk(
 )
 export const editTodoAndUpload = createAsyncThunk(
     'todos/editTodoAndUpload',
-    async({todo, accessToken}: {todo:ITodo, accessToken: string}, {getState, dispatch}) => {
+    async({todo, accessToken}: {todo:Partial<ITodo>, accessToken: string}, {getState, dispatch}) => {
         dispatch(editTodo(todo))
 
         const updatedTodos = (getState() as RootState).todoData.todos
@@ -111,7 +111,7 @@ const todosSlice = createSlice({
         deleteTodo: (state, action: PayloadAction<number>) => {
             state.todos = state.todos.filter(todo => todo.id !== action.payload)
         },
-        editTodo: (state, action: PayloadAction<ITodo>) => {
+        editTodo: (state, action: PayloadAction<Partial<ITodo>>) => {
             const existingTodo = state.todos.find(t => t.id === action.payload.id)
             if(existingTodo) {
                 Object.assign(existingTodo, action.payload)

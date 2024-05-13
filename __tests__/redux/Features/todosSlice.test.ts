@@ -39,10 +39,10 @@ describe('todosReducer', () => {
         const existingState = {
             todos: [{ id: 1, title: 'Test TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }],
         }
-        const updatedTodo = { id: 1, title: 'Updated TodoItem', description: null, list: null, dueDate: null, tags: [], subtasks: [], completed: false }
+        const updatedTodo = { id: 1, title: 'Updated TodoItem'}
         const action = { type: editTodo.type, payload: updatedTodo }
         const expectedState = {
-            todos: [updatedTodo],
+            todos: [{ ...existingState.todos[0], ...updatedTodo }]
         }
         expect(todosReducer(existingState, action)).toEqual(expectedState)
     })

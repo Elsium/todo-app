@@ -5,13 +5,15 @@ import {deleteTodoAndUpload, ITodo} from '@/redux/Features/todosSlice'
 import {AppDispatch} from '@/redux/store'
 import {useDispatch} from 'react-redux'
 import {useSession} from 'next-auth/react'
+import {FormikProps} from 'formik'
 
 interface PropsType {
     todo: ITodo
     closeTask: () => void
+    formik: FormikProps<Partial<ITodo>>
 }
 
-const TaskAdditional = ({todo, closeTask}: PropsType) => {
+const TaskAdditional = ({todo, closeTask, formik}: PropsType) => {
     const dispatch = useDispatch<AppDispatch>()
     const { data: session } = useSession()
     const accessToken = session?.accessToken || 'none'
@@ -21,8 +23,8 @@ const TaskAdditional = ({todo, closeTask}: PropsType) => {
         closeTask()
     }
 
-    const onChange = () => {
-        alert('change')
+    const onClick = () => {
+        formik.submitForm()
         closeTask()
     }
 
@@ -33,7 +35,7 @@ const TaskAdditional = ({todo, closeTask}: PropsType) => {
                 Delete task
             </button>
             <button className='bg-[#fed439] w-[45%] h-[50px] text-base font-jost font-bold rounded-xl
-            self-center hover:brightness-75 active:brightness-90 select-none' onClick={onChange}>
+            self-center hover:brightness-75 active:brightness-90 select-none' onClick={onClick}>
                 Save changes
             </button>
         </div>
