@@ -8,11 +8,17 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 import 'overlayscrollbars/styles/overlayscrollbars.css'
 
 interface PropsType {
-    initialValues: Partial<ITodo>
-    formik: FormikProps<Partial<ITodo>>
+    formik: FormikProps<{
+        id: number,
+        title: string,
+        description: string | null
+        list: string,
+        dueDate: Date | null,
+        tags: number[]
+    }>
 }
 
-const TaskForm = ({initialValues, formik}: PropsType) => {
+const TaskForm = ({formik}: PropsType) => {
 
     const lists = useSelector((state: RootState) => state.listData.lists)
     const tags = useSelector((state: RootState) => state.tagData.tags)
@@ -35,7 +41,7 @@ const TaskForm = ({initialValues, formik}: PropsType) => {
                 <p>List</p>
                 <select value={formik.values.list || 'null'} name="list" onChange={formik.handleChange} className={`${style.optional}`}>
                     <option value='null'>List</option>
-                    {lists.map(list => <option key={list.id} value={list.name}>{list.name}</option>)}
+                    {lists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
                 </select>
             </label>
             {/*<label className={style.select}>*/}

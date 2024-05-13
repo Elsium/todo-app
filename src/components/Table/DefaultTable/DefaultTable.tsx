@@ -28,7 +28,7 @@ const DefaultTable = ({openTask}: PropsType) => {
         const index = lists.findIndex(list => list.name === queryList)
         if(index !== -1) {
             title = lists[index].name
-            todos = todos.filter(todo => todo.list === lists[index].name)
+            todos = todos.filter(todo => todo.list?.name === lists[index].name)
         }
     }
     if (queryTag) {

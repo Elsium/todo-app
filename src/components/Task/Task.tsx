@@ -6,8 +6,8 @@ import CloseIcon from '@mui/icons-material/Close'
 import TaskAdditional from '@/components/Task/TaskAdditional/TaskAdditional'
 import {editTodoAndUpload, ITodo} from '@/redux/Features/todosSlice'
 import {useFormik} from 'formik'
-import {useDispatch} from 'react-redux'
-import {AppDispatch} from '@/redux/store'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppDispatch, RootState} from '@/redux/store'
 import {useSession} from 'next-auth/react'
 
 interface PropsType {
@@ -19,27 +19,31 @@ const Task = ({todo, closeTask}: PropsType) => {
     const dispatch = useDispatch<AppDispatch>()
     const { data: session } = useSession()
     const accessToken = session?.accessToken
+    const lists = useSelector((state: RootState) => state.listData.lists)
 
-    const initialValues: Partial<ITodo> = {
-        id: todo.id,
-        title: todo.title,
-        description: todo.description,
-        list: todo.list,
-        dueDate: todo.dueDate,
-        tags: todo.tags,
-    }
     const formik = useFormik({
         enableReinitialize: true,
-        initialValues,
+        initialValues: {
+            id: todo.id,
+            title: todo.title,
+            description: todo.description,
+            list: todo.list?.id.toString() || 'null',
+            dueDate: todo.dueDate,
+            tags: todo.tags,
+        },
         onSubmit: (data) => {
-            if(accessToken) dispatch(editTodoAndUpload({todo: data, accessToken}))
+            const updateTodo: Partial<ITodo> = {
+                ...data,
+                list: lists.find(l => l.id === Number(data.list))
+            }
+            if(accessToken) dispatch(editTodoAndUpload({todo: updateTodo, accessToken}))
         }
     })
     return (
         <form onSubmit={formik.handleSubmit} key={todo.id} className='flex flex-col justify-between basis-[500px] min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
             <div className='w-full flex flex-col gap-[20px]'>
                 <Title title={'Task'} Icon={CloseIcon} onClick={() => closeTask()}/>
-                <TaskForm formik={formik} initialValues={initialValues}/>
+                <TaskForm formik={formik}/>
                 <Title title={'SubTasks:'} Icon={null}/>
                 <SubtaskForm subtasks={todo.subtasks}/>
             </div>

@@ -10,7 +10,14 @@ import {FormikProps} from 'formik'
 interface PropsType {
     todo: ITodo
     closeTask: () => void
-    formik: FormikProps<Partial<ITodo>>
+    formik: FormikProps<{
+        id: number,
+        title: string,
+        description: string | null
+        list: string,
+        dueDate: Date | null,
+        tags: number[]
+    }>
 }
 
 const TaskAdditional = ({todo, closeTask, formik}: PropsType) => {

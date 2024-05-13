@@ -20,7 +20,6 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
     const accessToken = session?.accessToken || 'none'
     const dispatch = useDispatch<AppDispatch>()
 
-    const lists = useSelector((state: RootState) => state.listData.lists)
     const tags = useSelector((state: RootState) => state.tagData.tags)
 
     return (
@@ -37,8 +36,8 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                         <div className='flex justify-start items-center gap-[10px] font-jost'>
                             {todo.dueDate && <p>date</p>}
                             {todo.list && <div className='flex items-center gap-[5px]'>
-                                <div className='rounded w-[13px] h-[13px]' style={{background: lists.find(l => l.name === todo.list)?.color}}/>
-                                <p>{todo.list}</p>
+                                <div className='rounded w-[13px] h-[13px]' style={{background: todo.list.color}}/>
+                                <p>{todo.list.name}</p>
                             </div>}
                             {todo.subtasks.length > 0 && <p>subtasks count</p>}
                             {todo.tags.length > 0 && <p>tags</p>}

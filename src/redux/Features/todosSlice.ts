@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {uploadTodoData} from '@/redux/Thunks/googleThunk'
 import {RootState} from '@/redux/store'
+import {IList} from '@/redux/Features/listsSlice'
 
 interface ITodosState {
     todos: ITodo[]
@@ -10,7 +11,7 @@ export interface ITodo {
     id: number
     title: string
     description: string | null
-    list: string | null
+    list: IList | null
     dueDate: Date | null
     tags: number[]
     subtasks: ISubtask[]

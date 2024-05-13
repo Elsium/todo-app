@@ -5,7 +5,7 @@ import ListItem from './ListItem/ListItem'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import AddButton from '@/components/Menu/Lists/next/AddButton'
+import AddButton from '@/components/Menu/Lists/AddButton/AddButton'
 
 
 
