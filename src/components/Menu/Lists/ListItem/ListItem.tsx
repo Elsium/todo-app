@@ -17,7 +17,8 @@ const ListItem = ({list, count, filterTodos}: ComponentProps) => {
     const accessToken = session?.accessToken
     const dispatch = useDispatch<AppDispatch>()
 
-    const deleteList = () => {
+    const deleteList = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         if (accessToken) dispatch(deleteListAndUpload({id: list.id, accessToken}))
     }
 
@@ -29,7 +30,7 @@ const ListItem = ({list, count, filterTodos}: ComponentProps) => {
             </div>
             <div className='flex items-center gap-[10px]'>
                 {!!count && <p className={s.count}>{count}</p>}
-                <button className={s.delete} onClick={deleteList}>
+                <button className={s.delete} onClick={(e) => deleteList(e)}>
                     <CloseIcon className='text-xl'/>
                 </button>
             </div>
