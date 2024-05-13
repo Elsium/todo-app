@@ -6,18 +6,30 @@
     @apply bg-[#ebebeb] font-bold
 }
 
-.btn:hover > p {
+.btn:hover .count {
     @apply bg-[#f4f4f4] font-normal
 }
 
-.btn > div {
+.btn:hover .delete {
+    @apply flex
+}
+
+.name {
     @apply flex gap-[10px]
 }
 
-.btn > p {
+.count {
     @apply w-[30px] text-xs p-[1px] bg-[#ebebeb] rounded
 }
 
-.btn > div > div {
+.color {
     @apply w-[20px] h-[20px] rounded
+}
+
+.delete {
+    @apply items-center justify-center rounded hidden
+}
+
+.delete:hover {
+    @apply bg-[#f4f4f4]
 }

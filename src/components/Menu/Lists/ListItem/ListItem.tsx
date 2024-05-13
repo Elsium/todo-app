@@ -1,6 +1,10 @@
 import React from 'react'
 import s from './ListItem.module.css'
-import {IList} from '@/redux/Features/listsSlice'
+import {deleteListAndUpload, IList} from '@/redux/Features/listsSlice'
+import {useSession} from 'next-auth/react'
+import {useDispatch} from 'react-redux'
+import {AppDispatch} from '@/redux/store'
+import CloseIcon from '@mui/icons-material/Close'
 
 interface ComponentProps {
     list: IList
@@ -9,14 +13,26 @@ interface ComponentProps {
 }
 
 const ListItem = ({list, count, filterTodos}: ComponentProps) => {
+    const { data: session } = useSession()
+    const accessToken = session?.accessToken
+    const dispatch = useDispatch<AppDispatch>()
+
+    const deleteList = () => {
+        if (accessToken) dispatch(deleteListAndUpload({id: list.id, accessToken}))
+    }
 
     return (
         <button onClick={() => filterTodos(list.name)} className={s.btn}>
-            <div>
-                <div style={{background: list.color}}/>
+            <div className={s.name}>
+                <div className={s.color} style={{background: list.color}}/>
                 <p>{list.name}</p>
             </div>
-            {!!count && <p>{count}</p>}
+            <div className='flex items-center gap-[10px]'>
+                {!!count && <p className={s.count}>{count}</p>}
+                <button className={s.delete} onClick={deleteList}>
+                    <CloseIcon className='text-xl'/>
+                </button>
+            </div>
         </button>
     )
 }

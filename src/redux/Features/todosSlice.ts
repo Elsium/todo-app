@@ -52,6 +52,17 @@ export const editTodoAndUpload = createAsyncThunk(
         await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
     }
 )
+
+export const removeListFromTodosAndUpload = createAsyncThunk(
+    'todos/removeListFromTodosAndUpload',
+    async({listId, accessToken}: {listId:number, accessToken: string}, {getState, dispatch}) => {
+        dispatch(removeListFromTodos(listId))
+
+        const updatedTodos = (getState() as RootState).todoData.todos
+        await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+    }
+)
+
 export const toggleTodoCompletedAndUpload = createAsyncThunk(
     'todos/toggleTodoCompletedAndUpload',
     async({id, accessToken}: {id:number, accessToken: string}, {getState, dispatch}) => {
@@ -118,6 +129,14 @@ const todosSlice = createSlice({
                 Object.assign(existingTodo, action.payload)
             }
         },
+        removeListFromTodos: (state, action: PayloadAction<number>) => {
+            const listIdToRemove = action.payload
+            state.todos.forEach(todo => {
+                if (todo.list && todo.list.id === listIdToRemove) {
+                    todo.list = null
+                }
+            })
+        },
         toggleTodoCompleted: (state, action: PayloadAction<number>) => {
             const todo = state.todos.find(todo => todo.id === action.payload)
             if (todo) {
@@ -152,6 +171,6 @@ const todosSlice = createSlice({
     }
 })
 
-export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, loadTodos} = todosSlice.actions
+export const {addTodo, deleteTodo, editTodo, toggleTodoCompleted, toggleSubtaskCompleted, addSubtask, deleteSubtask, loadTodos, removeListFromTodos} = todosSlice.actions
 
 export default todosSlice.reducer

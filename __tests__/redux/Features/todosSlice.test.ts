@@ -2,7 +2,7 @@ import todosReducer, {
     addSubtask,
     addTodo, deleteSubtask,
     deleteTodo,
-    editTodo, loadTodos,
+    editTodo, loadTodos, removeListFromTodos,
     toggleSubtaskCompleted,
     toggleTodoCompleted
 } from '@/redux/Features/todosSlice'
@@ -43,6 +43,19 @@ describe('todosReducer', () => {
         const action = { type: editTodo.type, payload: updatedTodo }
         const expectedState = {
             todos: [{ ...existingState.todos[0], ...updatedTodo }]
+        }
+        expect(todosReducer(existingState, action)).toEqual(expectedState)
+    })
+
+    it('should handle removeListFromTodos', () => {
+        const list = { id: 1, name: 'Test List', color: '#ffffff' }
+        const todoWithList = { ...todo, list }
+        const existingState = {
+            todos: [todoWithList],
+        }
+        const action = { type: removeListFromTodos.type, payload: list.id }
+        const expectedState = {
+            todos: [{ ...todoWithList, list: null }],
         }
         expect(todosReducer(existingState, action)).toEqual(expectedState)
     })

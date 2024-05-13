@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '@/redux/store'
 import {uploadListData} from '@/redux/Thunks/googleThunk'
+import {removeListFromTodosAndUpload} from '@/redux/Features/todosSlice'
 
 interface IListsState {
     lists: IList[]
@@ -32,6 +33,7 @@ export const deleteListAndUpload = createAsyncThunk(
     async ({id, accessToken}: {id: number, accessToken: string}, {getState, dispatch}) => {
         dispatch(deleteList(id))
 
+        dispatch(removeListFromTodosAndUpload({listId: id, accessToken}))
         const updatedLists = (getState() as RootState).listData.lists
         await dispatch(uploadListData({state: updatedLists, accessToken}))
     }
