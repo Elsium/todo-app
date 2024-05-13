@@ -29,13 +29,11 @@ const TaskForm = ({formikTodo}: PropsType) => {
                 value={formikTodo.values.title} placeholder='Title' required className={style.title}/>
             <OverlayScrollbarsComponent
                 element='textarea'
-                options={{
-                    scrollbars: { autoHide: 'leave'},
-                }}
-                className={`${style.title} resize-none h-[150px]`}
-                name="description" onChange={formikTodo.handleChange} placeholder='Description'
-                value={formikTodo.values.description || ''}>
-            </OverlayScrollbarsComponent>
+                className={`${style.title} h-[150px] resize-none`}
+                name="description"
+                onChange={formikTodo.handleChange}
+                value={formikTodo.values.description || ''}
+                placeholder='Description'/>
             <label className={style.select}>
                 <p>List</p>
                 <select value={formikTodo.values.list || 'null'} name="list" onChange={formikTodo.handleChange} className={`${style.optional}`}>

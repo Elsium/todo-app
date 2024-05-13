@@ -20,7 +20,7 @@ const SubtaskForm = ({todoId}: PropsType) => {
         <div>
             <AddSubtask todoId={todoId}/>
             <OverlayScrollbarsComponent>
-                <ul className='flex flex-col gap-[5px] max-h-[300px]'>
+                <ul className='flex flex-col gap-[5px] max-h-[200px]'>
                     {subtasks && subtasks.map(subtask => <SubtaskItem key={subtask.id} subtask={subtask} todoId={todoId}/>)}
                 </ul>
             </OverlayScrollbarsComponent>
