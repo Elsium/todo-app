@@ -17,7 +17,7 @@ const SubtaskItem = ({subtask, todoId}: PropsType) => {
     const dispatch = useDispatch<AppDispatch>()
 
     return (
-        <li className='flex w-full items-center justify-between'>
+        <li className='flex w-full items-center justify-between pr-[10px]'>
             <div className='flex items-center gap-[10px]'>
                 <Checkbox size='small' checked={subtask.completed} onChange={() => dispatch(toggleSubtaskCompletedAndUpload({todoId, subtaskId: subtask.id, accessToken}))}/>
                 <p className='font-bold'>{subtask.title}</p>

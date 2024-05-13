@@ -30,7 +30,7 @@ const TaskForm = ({formikTodo}: PropsType) => {
             <OverlayScrollbarsComponent
                 element='textarea'
                 options={{
-                    scrollbars: { autoHide: 'leave'}
+                    scrollbars: { autoHide: 'leave'},
                 }}
                 className={`${style.title} resize-none h-[150px]`}
                 name="description" onChange={formikTodo.handleChange} placeholder='Description'

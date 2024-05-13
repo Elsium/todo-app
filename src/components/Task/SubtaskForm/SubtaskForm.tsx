@@ -3,6 +3,8 @@ import AddSubtask from '@/components/Task/SubtaskForm/AddSubtask/AddSubtask'
 import SubtaskItem from '@/components/Task/SubtaskForm/SubtaskItem/SubtaskItem'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
+import {OverlayScrollbarsComponent} from 'overlayscrollbars-react'
+import 'overlayscrollbars/styles/overlayscrollbars.css'
 
 interface PropsType {
     todoId: number
@@ -17,9 +19,16 @@ const SubtaskForm = ({todoId}: PropsType) => {
     return (
         <div>
             <AddSubtask todoId={todoId}/>
-            <ul className='flex flex-col gap-[5px]'>
-                {subtasks && subtasks.map(subtask => <SubtaskItem key={subtask.id} subtask={subtask} todoId={todoId}/>)}
-            </ul>
+            <OverlayScrollbarsComponent
+                options={{
+                    scrollbars: { autoHide: 'leave', autoHideDelay: 0},
+                }}
+
+            >
+                <ul className='flex flex-col gap-[5px] max-h-[300px]'>
+                    {subtasks && subtasks.map(subtask => <SubtaskItem key={subtask.id} subtask={subtask} todoId={todoId}/>)}
+                </ul>
+            </OverlayScrollbarsComponent>
         </div>
     )
 }
