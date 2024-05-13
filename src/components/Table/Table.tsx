@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react'
 import DefaultTable from '@/components/Table/DefaultTable/DefaultTable'
-import Sticky from '@/components/Table/next/Sticky'
-import Upcoming from '@/components/Table/next/Upcoming'
+import Sticky from '@/components/Table/Sticky/Sticky'
+import Upcoming from '@/components/Table/Upcoming/Upcoming'
 import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {

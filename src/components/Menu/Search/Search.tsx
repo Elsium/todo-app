@@ -2,7 +2,7 @@
 
 import React, {useCallback} from 'react'
 import SearchIcon from '@mui/icons-material/Search'
-import SearchForm from '@/components/Menu/next/SearchForm'
+import SearchForm from '@/components/Menu/Search/SearchForm'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 const Search = () => {

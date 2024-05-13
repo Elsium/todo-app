@@ -1,9 +1,9 @@
 import React from 'react'
 import Title from '@/components/UI/Title'
 import TaskForm from '@/components/Task/TaskForm/TaskForm'
-import SubtaskForm from '@/components/Task/next/SubtaskForm'
+import SubtaskForm from '@/components/Task/SubtaskForm/SubtaskForm'
 import CloseIcon from '@mui/icons-material/Close'
-import TaskAdditional from '@/components/Task/next/TaskAdditional'
+import TaskAdditional from '@/components/Task/TaskAdditional/TaskAdditional'
 import {ITodo} from '@/redux/Features/todosSlice'
 
 interface PropsType {

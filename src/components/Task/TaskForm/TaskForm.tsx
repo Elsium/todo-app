@@ -19,11 +19,14 @@ const TaskForm = ({todo}: PropsType) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            id: todo.id,
             title: todo.title,
             description: todo.description,
             list: todo.list,
             dueDate: todo.dueDate,
-            tags: todo.tags
+            tags: todo.tags,
+            completed: todo.completed,
+            subtasks: todo.subtasks
         },
         onSubmit: () => {
 
@@ -44,12 +47,13 @@ const TaskForm = ({todo}: PropsType) => {
                 name="description" onChange={formik.handleChange} placeholder='Description'
                 value={formik.values.description || ''}>
             </OverlayScrollbarsComponent>
-            {/*<label className={style.select}>*/}
-            {/*    <p>List</p>*/}
-            {/*    <select name="list" className={`${style.optional}`}>*/}
-            {/*        {lists.map(list => <option key={list.id} value={list.id} selected={list.id === todo.list}>{list.name}</option>)}*/}
-            {/*    </select>*/}
-            {/*</label>*/}
+            <label className={style.select}>
+                <p>List</p>
+                <select name="list" className={`${style.optional}`}>
+                    <option value="none" selected={!!todo.list}>List</option>
+                    {lists.map(list => <option key={list.id} value={list.id} selected={list.id === todo.list}>{list.name}</option>)}
+                </select>
+            </label>
             {/*<label className={style.select}>*/}
             {/*    <p>Due date</p>*/}
             {/*    <select name="list" className={`${style.optional}`}>*/}
