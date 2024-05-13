@@ -15,9 +15,9 @@ const AddTodoForm = () => {
         initialValues: {
             title: ''
         },
-        onSubmit: (values, { resetForm }) => {
-            if (accessToken && values.title.length > 0) {
-                dispatch(addTodoAndUpload({title: values.title, accessToken}))
+        onSubmit: (data, { resetForm }) => {
+            if (accessToken && data.title.length > 0) {
+                dispatch(addTodoAndUpload({title: data.title, accessToken}))
                 resetForm()
             } else {
                 console.error('Access token is not available.')

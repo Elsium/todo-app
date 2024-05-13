@@ -1,6 +1,5 @@
 import React from 'react'
-import {ITodo} from '@/redux/Features/todosSlice'
-import {FormikProps, useFormik} from 'formik'
+import {FormikProps} from 'formik'
 import style from './TaskForm.module.css'
 import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
@@ -8,38 +7,38 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 import 'overlayscrollbars/styles/overlayscrollbars.css'
 
 interface PropsType {
-    formik: FormikProps<{
+    formikTodo: FormikProps<{
         id: number,
         title: string,
-        description: string | null
+        description: string | null,
         list: string,
         dueDate: Date | null,
-        tags: number[]
+        tags: number[],
     }>
 }
 
-const TaskForm = ({formik}: PropsType) => {
+const TaskForm = ({formikTodo}: PropsType) => {
 
     const lists = useSelector((state: RootState) => state.listData.lists)
     const tags = useSelector((state: RootState) => state.tagData.tags)
 
     return (
-        <div className='flex flex-col gap-[10px]'>
+        <form onSubmit={formikTodo.handleSubmit} className='flex flex-col gap-[10px]'>
             <input
-                type='text' name='title' onChange={formik.handleChange}
-                value={formik.values.title} placeholder='Title' required className={style.title}/>
+                type='text' name='title' onChange={formikTodo.handleChange}
+                value={formikTodo.values.title} placeholder='Title' required className={style.title}/>
             <OverlayScrollbarsComponent
                 element='textarea'
                 options={{
                     scrollbars: { autoHide: 'leave'}
                 }}
                 className={`${style.title} resize-none h-[150px]`}
-                name="description" onChange={formik.handleChange} placeholder='Description'
-                value={formik.values.description || ''}>
+                name="description" onChange={formikTodo.handleChange} placeholder='Description'
+                value={formikTodo.values.description || ''}>
             </OverlayScrollbarsComponent>
             <label className={style.select}>
                 <p>List</p>
-                <select value={formik.values.list || 'null'} name="list" onChange={formik.handleChange} className={`${style.optional}`}>
+                <select value={formikTodo.values.list || 'null'} name="list" onChange={formikTodo.handleChange} className={`${style.optional}`}>
                     <option value='null'>List</option>
                     {lists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
                 </select>
@@ -50,7 +49,7 @@ const TaskForm = ({formik}: PropsType) => {
             {/*<label className={style.select}>*/}
             {/*    <p>Tags</p>*/}
             {/*</label>*/}
-        </div>
+        </form>
     )
 }
 

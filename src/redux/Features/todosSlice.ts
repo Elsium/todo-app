@@ -92,7 +92,13 @@ export const toggleSubtaskCompletedAndUpload = createAsyncThunk(
 )
 export const addSubtaskAndUpload = createAsyncThunk(
     'todos/addSubtaskAndUpload',
-    async({todoId, subtask, accessToken}: {todoId: number, subtask: ISubtask, accessToken: string}, {getState, dispatch}) => {
+    async({todoId, title, accessToken}: {todoId: number, title: string, accessToken: string}, {getState, dispatch}) => {
+        const subtask: ISubtask = {
+            id: Date.now(),
+            title,
+            completed: false
+        }
+
         dispatch(addSubtask({todoId, subtask}))
 
         const updatedTodos = (getState() as RootState).todoData.todos
