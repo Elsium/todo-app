@@ -7,6 +7,7 @@ import {useSession} from 'next-auth/react'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppDispatch, RootState} from '@/redux/store'
 import {Checkbox} from '@mui/material'
+import s from './TodoItem.module.css'
 
 interface PropsType {
     todo: ITodo
@@ -33,13 +34,16 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                         <p className='font-poppins'>
                             {todo.title}
                         </p>
-                        <div className='flex justify-start items-center gap-[10px] font-jost'>
-                            {todo.dueDate && <p>date</p>}
-                            {todo.list && <div className='flex items-center gap-[5px]'>
+                        <div className='flex justify-start items-center gap-[10px] font-jost text-xm'>
+                            {todo.dueDate && <p className={`${todo.list || todo.subtasks.length > 0 || todo.tags.length > 0 ? s.line : ''}}`}>date</p>}
+                            {todo.list && <div className={`flex items-center gap-[5px] ${todo.subtasks.length > 0 || todo.tags.length > 0 ? s.line : ''}`}>
                                 <div className='rounded w-[13px] h-[13px]' style={{background: todo.list.color}}/>
                                 <p>{todo.list.name}</p>
                             </div>}
-                            {todo.subtasks.length > 0 && <p>subtasks count</p>}
+                            {todo.subtasks.length > 0 && <div className={`flex gap-[5px] items-center ${todo.tags.length > 0 ? s.line : ''}`}>
+                                <p>Subtasks</p>
+                                <p className='text-sm bg-listHover rounded px-[5px]'>{todo.subtasks.filter(s => s.completed).length}/{todo.subtasks.length}</p>
+                            </div>}
                             {todo.tags.length > 0 && <p>tags</p>}
                         </div>
                     </button>

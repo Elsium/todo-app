@@ -3,11 +3,11 @@
 }
 
 .btn:hover {
-    @apply bg-[#ebebeb] font-bold
+    @apply bg-listHover font-bold
 }
 
 .btn:hover .count {
-    @apply bg-[#f4f4f4] font-normal
+    @apply bg-ground font-normal
 }
 
 .btn:hover .delete {
@@ -19,7 +19,7 @@
 }
 
 .count {
-    @apply w-[30px] text-xs p-[1px] bg-[#ebebeb] rounded
+    @apply w-[30px] text-xs p-[1px] bg-listHover rounded
 }
 
 .color {
@@ -31,5 +31,5 @@
 }
 
 .delete:hover {
-    @apply bg-[#f4f4f4]
+    @apply bg-ground
 }
