@@ -4,6 +4,7 @@ import stickersReducer from './Features/stickersSlice'
 import tagsReducer from './Features/tagsSlice'
 import listsReducer from './Features/listsSlice'
 import authReducer from './Features/authSlice'
+import initialReducer from './Features/initialSlice'
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         stickerData: stickersReducer,
         tagData: tagsReducer,
         listData: listsReducer,
-        auth: authReducer
+        auth: authReducer,
+        initial: initialReducer
     },
     devTools: process.env.NODE_ENV !== 'production'
 })

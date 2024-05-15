@@ -5,6 +5,7 @@ import {IList, loadLists} from '@/redux/Features/listsSlice'
 import {ITag, loadTags} from '@/redux/Features/tagsSlice'
 import {ITodo, loadTodos} from '@/redux/Features/todosSlice'
 import {ISticker, loadStickers} from '@/redux/Features/stickersSlice'
+import {initialSuccess} from '@/redux/Features/initialSlice'
 
 export const uploadListData = createAsyncThunk(
     'data/uploadListData',
@@ -85,7 +86,8 @@ export const getAllData = createAsyncThunk(
     async(accessToken: string, {dispatch}) => {
         await dispatch(getListData(accessToken))
         await dispatch(getTagData(accessToken))
-        dispatch(getTodoData(accessToken))
-        dispatch(getStickerData(accessToken))
+        await dispatch(getTodoData(accessToken))
+        await dispatch(getStickerData(accessToken))
+        dispatch(initialSuccess(true))
     }
 )

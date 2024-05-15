@@ -7,6 +7,7 @@ import {SessionProvider} from 'next-auth/react'
 import Session from '@/HOC/Session'
 import {useState} from 'react'
 import {ITodo} from '@/redux/Features/todosSlice'
+import Initial from '@/HOC/Initial'
 
 export default function Work() {
 
@@ -23,11 +24,13 @@ export default function Work() {
     return (
         <SessionProvider>
             <Session>
-                <main className="flex px-[40px] py-[20px] min-h-screen gap-[20px]">
-                    <Menu/>
-                    <Table openTask={openTask}/>
-                    {task && <Task todo={task} closeTask={closeTask}/>}
-                </main>
+                <Initial>
+                    <main className="flex px-[40px] py-[20px] min-h-screen gap-[20px]">
+                        <Menu/>
+                        <Table openTask={openTask}/>
+                        {task && <Task todo={task} closeTask={closeTask}/>}
+                    </main>
+                </Initial>
             </Session>
         </SessionProvider>
     )

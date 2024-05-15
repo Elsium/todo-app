@@ -41,7 +41,7 @@ const Task = ({todo, closeTask}: PropsType) => {
     })
 
     return (
-        <div key={todo.id} className='flex flex-col justify-between basis-[500px] min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
+        <div key={todo.id} className='flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
             <div className='w-full flex flex-col gap-[20px]'>
                 <Title title={'Task:'} Icon={CloseIcon} onClick={() => closeTask()}/>
                 <TaskForm formikTodo={formikTodo}/>
