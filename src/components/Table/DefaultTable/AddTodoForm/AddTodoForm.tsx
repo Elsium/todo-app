@@ -47,7 +47,7 @@ const AddTodoForm = ({completedCollapsed, areCompletedCollapsed}: PropsType) => 
             </form>
             <label className='flex items-center gap-[10px] border-l border-gray-300'>
                 <Checkbox size="small" value={!areCompletedCollapsed} onChange={completedCollapsed}/>
-                <p>Completed</p>
+                <p className='font-poppins cursor-pointer'>Completed</p>
             </label>
         </div>
     )

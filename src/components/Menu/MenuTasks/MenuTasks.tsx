@@ -28,17 +28,13 @@ const MenuTasks = () => {
 
     const upcoming = () => {
         const params = new URLSearchParams(searchParams.toString())
-        if (params.get('upcoming') === 'true') {
-            return
-        }
+        if (params.get('upcoming') === 'true') return
         router.push(`${pathname}?${createQueryString('upcoming', 'true')}`)
     }
 
     const sticky = () => {
         const params = new URLSearchParams(searchParams.toString())
-        if (params.get('upcoming') === 'true') {
-            return
-        }
+        if (params.get('sticky') === 'true') return
         router.push(`${pathname}?${createQueryString('sticky', 'true')}`)
     }
 

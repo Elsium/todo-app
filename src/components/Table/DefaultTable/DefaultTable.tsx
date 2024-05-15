@@ -19,7 +19,7 @@ const DefaultTable = ({openTask}: PropsType) => {
 
     const lists = useSelector((state: RootState) => state.listData.lists)
     const tags = useSelector((state: RootState) => state.tagData.tags)
-    const [areCompletedCollapsed, setAreCompletedCollapsed] = useState(false)
+    const [areCompletedCollapsed, setAreCompletedCollapsed] = useState(true)
     const searchParams = useSearchParams()
 
     const queryList = searchParams.get('list')
