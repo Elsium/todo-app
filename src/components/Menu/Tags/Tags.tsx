@@ -28,7 +28,6 @@ const Tags = () => {
     const filterTodos = (tag: string | undefined) => {
         const params = new URLSearchParams(searchParams.toString())
         if (params.get('tag') === tag) {
-            router.push(pathname)
             return
         }
         tag && router.push(`${pathname}?${createQueryString('tag', tag)}`)

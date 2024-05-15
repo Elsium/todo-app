@@ -1,5 +1,6 @@
 import React from 'react'
 import {Formik, Form, Field} from 'formik'
+import {useSearchParams} from 'next/navigation'
 
 interface SearchFormProps {
     onSearch: (searchQuery: string) => void
@@ -12,11 +13,14 @@ interface SearchFormValues {
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({cn, ph, onSearch}) => {
-    const initialValues: SearchFormValues = {search: ''}
+    const searchParams = useSearchParams()
+    const queryTitle = searchParams.get('title')
+    const initialValues: SearchFormValues = {search: queryTitle || ''}
 
     return (
         <Formik
             initialValues={initialValues}
+            enableReinitialize={true}
             onSubmit={() => {}}>
             {({setFieldValue}) => (
                 <Form className={cn}>

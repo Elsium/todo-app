@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux'
 import React from 'react'
 import {RootState} from '@/redux/store'
 import {useSearchParams} from 'next/navigation'
-import AddTodoForm from '@/components/Table/DefaultTable/next/AddTodoForm'
+import AddTodoForm from '@/components/Table/DefaultTable/AddTodoForm/AddTodoForm'
 
 interface PropsType {
     openTask: (task: ITodo) => void
@@ -17,7 +17,7 @@ const DefaultTable = ({openTask}: PropsType) => {
     let todos = useSelector((state: RootState) => state.todoData.todos)
     const lists = useSelector((state: RootState) => state.listData.lists)
     const tags = useSelector((state: RootState) => state.tagData.tags)
-    let title = 'Today'
+    let title = 'All'
 
     const searchParams = useSearchParams()
     const queryList = searchParams.get('list')

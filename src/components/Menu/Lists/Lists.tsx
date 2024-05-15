@@ -24,13 +24,11 @@ const Lists = () => {
 
             return params.toString()
         },
-        []
-    )
+        [])
 
     const filterTodos = (list: string | undefined) => {
         const params = new URLSearchParams(searchParams.toString())
         if (params.get('list') === list) {
-            router.push(pathname)
             return
         }
         router.push(pathname)
