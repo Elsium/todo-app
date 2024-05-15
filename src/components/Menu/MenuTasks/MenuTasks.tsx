@@ -61,7 +61,7 @@ const MenuTasks = () => {
                     <ChecklistRtlIcon/>
                     <p>All</p>
                 </div>
-                <p>{todos?.length}</p>
+                <p>{todos?.filter(todo => !todo.completed).length}</p>
             </button>
             <button className={s.btn} onClick={sticky}>
                 <div>

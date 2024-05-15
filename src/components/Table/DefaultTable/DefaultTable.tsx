@@ -4,7 +4,7 @@ import TableTitle from '@/components/UI/TableTitle'
 import Todos from '@/components/Table/DefaultTable/Todos/Todos'
 import {ITodo} from '@/redux/Features/todosSlice'
 import {useSelector} from 'react-redux'
-import React from 'react'
+import React, {useState} from 'react'
 import {RootState} from '@/redux/store'
 import {useSearchParams} from 'next/navigation'
 import AddTodoForm from '@/components/Table/DefaultTable/AddTodoForm/AddTodoForm'
@@ -15,11 +15,13 @@ interface PropsType {
 
 const DefaultTable = ({openTask}: PropsType) => {
     let todos = useSelector((state: RootState) => state.todoData.todos)
-    const lists = useSelector((state: RootState) => state.listData.lists)
-    const tags = useSelector((state: RootState) => state.tagData.tags)
     let title = 'All'
 
+    const lists = useSelector((state: RootState) => state.listData.lists)
+    const tags = useSelector((state: RootState) => state.tagData.tags)
+    const [areCompletedCollapsed, setAreCompletedCollapsed] = useState(false)
     const searchParams = useSearchParams()
+
     const queryList = searchParams.get('list')
     const queryTag = searchParams.get('tag')
     const queryTitle = searchParams.get('title')
@@ -43,10 +45,22 @@ const DefaultTable = ({openTask}: PropsType) => {
         todos = todos.filter(todo => todo.title.includes(queryTitle))
     }
 
+    if (todos.length > 0) todos = [...todos].sort((a,b) => {
+        if (a.completed && !b.completed) return 1
+        if (b.completed && !a.completed) return -1
+        return 0
+    })
+
+    todos = areCompletedCollapsed ? todos.filter(todo => !todo.completed) : todos
+
+    const completedCollapsed = () => {
+        setAreCompletedCollapsed(!areCompletedCollapsed)
+    }
+
     return (
-        <section className='w-full flex flex-col justify-start p-[30px]'>
-            <TableTitle title={title} count={todos?.length}/>
-            <AddTodoForm/>
+        <section className='w-full flex flex-col justify-start p-[30px] select-none'>
+            <TableTitle title={title} count={todos?.filter(todo => !todo.completed).length}/>
+            <AddTodoForm completedCollapsed={completedCollapsed} areCompletedCollapsed={areCompletedCollapsed}/>
             <Todos todos={todos} openTask={openTask}/>
         </section>
     )

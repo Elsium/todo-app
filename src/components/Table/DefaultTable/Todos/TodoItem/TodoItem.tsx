@@ -31,7 +31,7 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                         <Checkbox checked={todo.completed} onChange={() => dispatch(toggleTodoCompletedAndUpload({id: todo.id, accessToken}))}/>
                     </div>
                     <button onClick={() => openTask(todo)} className='flex flex-col justify-start w-full gap-[5px] py-[10px] ml-[15px]'>
-                        <p className='font-poppins'>
+                        <p className={`font-poppins ${todo.completed && 'line-through'}`}>
                             {todo.title}
                         </p>
                         <div className='flex justify-start items-center gap-[10px] font-jost text-xm'>
@@ -52,7 +52,7 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                     <NavigateNextIcon  style={{fontSize: '2rem'}} className='text-[#7c7c7c]'/>
                 </button>
             </li>
-            {index < length - 1 && <div className="w-full h-[1px] bg-gray-300"/>}
+            {index < length - 1 && <div className="w-full min-h-[1px] bg-gray-300"/>}
         </>
     )
 }
