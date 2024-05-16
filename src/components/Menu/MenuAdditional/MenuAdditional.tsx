@@ -10,7 +10,7 @@ import s from './MenuAdditional.module.css'
 const MenuAdditional = () => {
     const router = useRouter()
     return (
-        <div>
+        <div className='flex flex-col gap-[5px]'>
             <button onClick={() => router.push('/')} className={s.btn}>
                 <HomeIcon/>
                 <p>Main</p>
