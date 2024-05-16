@@ -1,5 +1,5 @@
 .btn {
-    @apply w-full flex items-center justify-between py-[5px] px-[10px] rounded
+    @apply w-full flex items-center justify-between py-[5px] px-[10px] rounded gap-[10px]
 }
 
 .btn:hover {

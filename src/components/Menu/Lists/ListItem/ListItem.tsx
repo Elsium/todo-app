@@ -23,18 +23,18 @@ const ListItem = ({list, count, filterTodos}: ComponentProps) => {
     }
 
     return (
-        <button onClick={() => filterTodos(list.name)} className={s.btn}>
-            <div className={s.name}>
-                <div className={s.color} style={{background: list.color}}/>
-                <p>{list.name}</p>
-            </div>
-            <div className='flex items-center gap-[10px]'>
+        <div className={s.btn}>
+            <button onClick={() => filterTodos(list.name)} className='flex items-center justify-between w-full'>
+                <div className={s.name}>
+                    <div className={s.color} style={{background: list.color}}/>
+                    <p>{list.name}</p>
+                </div>
                 {!!count && <p className={s.count}>{count}</p>}
-                <button className={s.delete} onClick={(e) => deleteList(e)}>
-                    <CloseIcon className='text-xl'/>
-                </button>
-            </div>
-        </button>
+            </button>
+            <button className={s.delete} onClick={(e) => deleteList(e)}>
+                <CloseIcon className='text-xl'/>
+            </button>
+        </div>
     )
 }
 
