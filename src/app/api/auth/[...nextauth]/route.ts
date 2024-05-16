@@ -22,7 +22,7 @@ async function refreshAccessToken(token: any) {
             }
         })
 
-        if (!response.data.ok) throw response.data
+        if (!response.data.ok) throw new Error('No response data')
 
         return {
             ...token,
@@ -31,8 +31,7 @@ async function refreshAccessToken(token: any) {
             refreshToken: response.data.refresh_token ?? token.refreshToken
         }
     } catch (error) {
-        console.error(error)
-
+        console.error('refreshAccessToken error:', error)
         return {
             ...token,
             error: 'RefreshAccessTokenError'
@@ -60,16 +59,15 @@ const authOption: NextAuthOptions = {
             if (account) {
                 token.accessToken = account.access_token
             }
-            if (!token.accessTokenExpires || Date.now() < token.accessTokenExpires) {
-                return token
+            if (token.accessTokenExpires && Date.now() > token.accessTokenExpires) {
+                console.log('Access token has expired, refreshing...')
+                return refreshAccessToken(token)
             }
-            return refreshAccessToken(token)
+            return token
         },
         async session({ session, token }) {
-            if (token) {
-                session.accessToken = token.accessToken
-                session.error = token.error
-            }
+            session.accessToken = token.accessToken
+            session.error = token.error
             return session
         },
         async signIn({profile}) {
