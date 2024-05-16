@@ -1,4 +1,4 @@
-import {createAsyncThunk} from '@reduxjs/toolkit'
+import {createAsyncThunk, PayloadAction, ThunkDispatch} from '@reduxjs/toolkit'
 import {uploadState} from '@/api/gdrive/upload'
 import {getState} from '@/api/gdrive/get'
 import {IList, loadLists} from '@/redux/Features/listsSlice'
@@ -32,52 +32,41 @@ export const uploadStickerData = createAsyncThunk(
     }
 )
 
+const _loadToState = (data: string | ITodo | IList | ISticker | ITag | null, action: any, dispatch: ThunkDispatch<any, any, any>) => {
+    if (data === null) return
+    if (typeof data === 'string') {
+        dispatch(action(JSON.parse(data)))
+        return
+    }
+    dispatch(action(data))
+}
+
 export const getListData = createAsyncThunk(
     'data/getListData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-lists.json', accessToken})
-        if(data === null) return
-        if(typeof data === 'string') {
-            dispatch(loadLists(JSON.parse(data)))
-            return
-        }
-        dispatch(loadLists(data))
+        _loadToState(data, loadLists, dispatch)
     }
 )
 export const getTagData = createAsyncThunk(
     'data/getTagData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-tags.json', accessToken})
-        if(data === null) return
-        if(typeof data === 'string') {
-            dispatch(loadTags(JSON.parse(data)))
-            return
-        }
-        dispatch(loadTags(data))
+        _loadToState(data, loadTags, dispatch)
     }
 )
 export const getTodoData = createAsyncThunk(
     'data/getTodoData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-todos.json', accessToken})
-        if(data === null) return
-        if(typeof data === 'string') {
-            dispatch(loadTodos(JSON.parse(data)))
-            return
-        }
-        dispatch(loadTodos(data))
+        _loadToState(data, loadTodos, dispatch)
     }
 )
 export const getStickerData = createAsyncThunk(
     'data/getStickerData',
     async (accessToken: string, {dispatch}) => {
         const data = await getState({filename: 'TaskZen-stickers.json', accessToken})
-        if(data === null) return
-        if(typeof data === 'string') {
-            dispatch(loadStickers(JSON.parse(data)))
-            return
-        }
-        dispatch(loadStickers(data))
+        _loadToState(data, loadStickers, dispatch)
     }
 )
 

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {checkIfFileExists} from '@/api/gdrive/checkIfFileExists'
+import {signIn} from 'next-auth/react'
 
 export const getState = async ({accessToken, filename}: {accessToken: string, filename: string}) => {
     const isFile = await checkIfFileExists(filename, accessToken)
