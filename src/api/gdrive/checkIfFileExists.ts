@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {signIn} from 'next-auth/react'
 
 export async function checkIfFileExists(filename: string, accessToken: string) {
     try {
@@ -13,7 +14,6 @@ export async function checkIfFileExists(filename: string, accessToken: string) {
         })
         return response.data.files.length > 0 && response.data.files
     } catch (error) {
-        console.error('Error checking if file exists:', error)
-        throw error
+        if (axios.isAxiosError(error) && error.response?.status === 401) signIn('google', {callbackUrl: '/work'})
     }
 }

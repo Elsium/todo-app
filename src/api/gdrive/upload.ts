@@ -44,7 +44,6 @@ export const uploadState = async (state: IList[] | ITag[] | ITodo[] | ISticker[]
             return response.data
         }
     } catch (error) {
-        console.error('Error post state to Google Drive: ', error)
-        throw error
+        return null
     }
 }

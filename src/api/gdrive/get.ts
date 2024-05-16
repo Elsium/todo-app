@@ -13,7 +13,6 @@ export const getState = async ({accessToken, filename}: {accessToken: string, fi
         })
         return response.data
     } catch (error) {
-        console.error('Error get state from Google Drive: ', error)
-        throw error
+        return null
     }
 }
