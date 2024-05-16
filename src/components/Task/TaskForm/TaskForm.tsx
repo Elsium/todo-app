@@ -5,6 +5,8 @@ import {useSelector} from 'react-redux'
 import {RootState} from '@/redux/store'
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 import 'overlayscrollbars/styles/overlayscrollbars.css'
+import {ITag} from '@/redux/Features/tagsSlice'
+import {IList} from '@/redux/Features/listsSlice'
 
 interface PropsType {
     formikTodo: FormikProps<{
@@ -13,7 +15,7 @@ interface PropsType {
         description: string | null,
         list: string,
         dueDate: Date | null,
-        tags: number[],
+        tags: ITag[],
     }>
 }
 
