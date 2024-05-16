@@ -2,12 +2,20 @@
 
 import React from 'react'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+import HomeIcon from '@mui/icons-material/Home'
 import { signOut } from 'next-auth/react'
+import {useRouter} from 'next/navigation'
+import s from './MenuAdditional.module.css'
 
 const MenuAdditional = () => {
+    const router = useRouter()
     return (
         <div>
-            <button onClick={() => signOut({ callbackUrl: '/' })} className='w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] select-none hover:bg-listHover hover:font-bold'>
+            <button onClick={() => router.push('/')} className={s.btn}>
+                <HomeIcon/>
+                <p>Main</p>
+            </button>
+            <button onClick={() => signOut({ callbackUrl: '/' })} className={s.btn}>
                 <ExitToAppIcon/>
                 <p>Sing out</p>
             </button>
