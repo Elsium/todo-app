@@ -1,11 +1,12 @@
 import React from 'react'
 import { useFormik } from 'formik'
-import { useDispatch } from 'react-redux'
-import { addTodoAndUpload } from '@/redux/Features/todosSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import {addTodoAndUpload, editTodoAndUpload, ITodo} from '@/redux/Features/todosSlice'
 import {useSession} from 'next-auth/react'
 import AddIcon from '@mui/icons-material/Add'
-import {AppDispatch} from '@/redux/store'
+import {AppDispatch, RootState} from '@/redux/store'
 import {Checkbox} from '@mui/material'
+import {useSearchParams} from 'next/navigation'
 
 interface PropsType {
     completedCollapsed: () => void
@@ -13,17 +14,25 @@ interface PropsType {
 }
 
 const AddTodoForm = ({completedCollapsed, areCompletedCollapsed}: PropsType) => {
+    const searchParams = useSearchParams()
     const { data: session } = useSession()
     const accessToken = session?.accessToken
     const dispatch = useDispatch<AppDispatch>()
+    const lists = useSelector((state: RootState) => state.listData.lists)
+
     const formik = useFormik({
         initialValues: {
             title: ''
         },
-        onSubmit: (data, { resetForm }) => {
+        onSubmit: async(data, { resetForm }) => {
             if (accessToken && data.title.length > 0) {
-                dispatch(addTodoAndUpload({title: data.title, accessToken}))
                 resetForm()
+                const index = lists.findIndex(list => list.name === searchParams.get('list'))
+                if (index !== -1) {
+                    dispatch(addTodoAndUpload({todo: {title: data.title, list: lists[index]}, accessToken}))
+                } else {
+                    dispatch(addTodoAndUpload({todo: {title: data.title}, accessToken}))
+                }
             } else {
                 console.error('Access token is not available.')
             }

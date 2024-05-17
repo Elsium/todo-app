@@ -33,10 +33,10 @@ const Menu = () => {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Lists/>
                 </Suspense>
-                <hr/>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Tags/>
-                </Suspense>
+                {/*<hr/>*/}
+                {/*<Suspense fallback={<div>Loading...</div>}>*/}
+                {/*    <Tags/>*/}
+                {/*</Suspense>*/}
             </div>
             <MenuAdditional/>
         </nav>

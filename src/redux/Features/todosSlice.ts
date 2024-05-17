@@ -27,21 +27,23 @@ export interface ISubtask {
 
 export const addTodoAndUpload = createAsyncThunk(
     'todos/addTodoAndUpload',
-    async({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
+    async({todo, accessToken}: {todo: Partial<ITodo>, accessToken: string}, {getState, dispatch}) => {
         const newTodo: ITodo = {
-            id: Date.now(),
-            title,
+            title: '',
             description: null,
             list: null,
             dueDate: null,
             tags: [],
             subtasks: [],
             completed: false,
+            ...todo,
+            id: Date.now()
         }
         dispatch(addTodo(newTodo))
 
         const updatedTodos = (getState() as RootState).todoData.todos
         await dispatch(uploadTodoData({state: updatedTodos, accessToken}))
+        return newTodo
     }
 )
 export const editTodoAndUpload = createAsyncThunk(
