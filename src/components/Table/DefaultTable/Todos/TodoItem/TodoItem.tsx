@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {AppDispatch, RootState} from '@/redux/store'
 import {Checkbox} from '@mui/material'
 import s from './TodoItem.module.css'
+import TodayIcon from '@mui/icons-material/Today'
 import dayjs from 'dayjs'
 
 interface PropsType {
@@ -36,7 +37,10 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
                             {todo.title}
                         </p>
                         <div className='flex justify-start items-center gap-[10px] font-jost text-xm'>
-                            {todo.dueDate && <p className={`flex items-center gap-[5px] text-sm ${todo.list || todo.subtasks.length > 0 || todo.tags.length > 0 ? s.line : ''}`}>{dayjs(todo.dueDate).toDate().toDateString()}</p>}
+                            {todo.dueDate && <div className={`flex items-center gap-[5px] text-sm ${todo.list || todo.subtasks.length > 0 || todo.tags.length > 0 ? s.line : ''}`}>
+                                <TodayIcon/>
+                                <p className={`${dayjs(todo.dueDate).valueOf() < Date.now() && 'text-red-500'}`}>{dayjs(todo.dueDate).toDate().toDateString()}</p>
+                            </div>}
                             {todo.list && <div className={`flex items-center gap-[5px] ${todo.subtasks.length > 0 || todo.tags.length > 0 ? s.line : ''}`}>
                                 <div className='rounded w-[13px] h-[13px]' style={{background: todo.list.color}}/>
                                 <p>{todo.list.name}</p>
