@@ -7,6 +7,8 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 import 'overlayscrollbars/styles/overlayscrollbars.css'
 import {ITag} from '@/redux/Features/tagsSlice'
 import {IList} from '@/redux/Features/listsSlice'
+import {DateTimePicker, renderTimeViewClock} from '@mui/x-date-pickers'
+import {Dayjs} from 'dayjs'
 
 interface PropsType {
     formikTodo: FormikProps<{
@@ -14,7 +16,7 @@ interface PropsType {
         title: string,
         description: string | null,
         list: string,
-        dueDate: Date | null,
+        dueDate: Dayjs | null,
         tags: ITag[],
     }>
 }
@@ -43,9 +45,17 @@ const TaskForm = ({formikTodo}: PropsType) => {
                     {lists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
                 </select>
             </label>
-            {/*<label className={style.select}>*/}
-            {/*    <p>Due date</p>*/}
-            {/*</label>*/}
+            <label className={style.select}>
+                <p>Due date</p>
+                <DateTimePicker
+                    value={formikTodo.values.dueDate}
+                    onChange={(value) => formikTodo.setFieldValue('dueDate', value)}
+                    viewRenderers={{
+                        hours: renderTimeViewClock,
+                        minutes: renderTimeViewClock,
+                        seconds: renderTimeViewClock,
+                    }}/>
+            </label>
             {/*<label className={style.select}>*/}
             {/*    <p>Tags</p>*/}
             {/*</label>*/}

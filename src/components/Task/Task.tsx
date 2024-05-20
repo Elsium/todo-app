@@ -9,6 +9,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {AppDispatch, RootState} from '@/redux/store'
 import {useSession} from 'next-auth/react'
 import {useFormik} from 'formik'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs from 'dayjs'
 
 interface PropsType {
     todo: ITodo
@@ -28,28 +31,31 @@ const Task = ({todo, closeTask}: PropsType) => {
             title: todo.title,
             description: todo.description,
             list: todo.list?.id.toString() || 'null',
-            dueDate: todo.dueDate,
+            dueDate: todo.dueDate ? dayjs(todo.dueDate) : null,
             tags: todo.tags,
         },
         onSubmit: (data) => {
             const updateTodo: Partial<ITodo> = {
                 ...data,
-                list: lists.find(l => l.id === Number(data.list))
+                list: lists.find(l => l.id === Number(data.list)),
+                dueDate: data.dueDate ? data.dueDate.toISOString() : null
             }
             if (accessToken) dispatch(editTodoAndUpload({todo: updateTodo, accessToken}))
         }
     })
 
     return (
-        <div key={todo.id} className='flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
-            <div className='w-full flex flex-col gap-[20px]'>
-                <Title title={'Task:'} Icon={CloseIcon} onClick={() => closeTask()}/>
-                <TaskForm formikTodo={formikTodo}/>
-                <Title title={'SubTasks:'} Icon={null}/>
-                <SubtaskForm todoId={todo.id}/>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div key={todo.id} className='flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
+                <div className='w-full flex flex-col gap-[20px]'>
+                    <Title title={'Task:'} Icon={CloseIcon} onClick={() => closeTask()}/>
+                    <TaskForm formikTodo={formikTodo}/>
+                    <Title title={'SubTasks:'} Icon={null}/>
+                    <SubtaskForm todoId={todo.id}/>
+                </div>
+                <TaskAdditional formikSubmit={formikTodo.submitForm} todo={todo} closeTask={closeTask}/>
             </div>
-            <TaskAdditional formikSubmit={formikTodo.submitForm} todo={todo} closeTask={closeTask}/>
-        </div>
+        </LocalizationProvider>
     )
 }
 

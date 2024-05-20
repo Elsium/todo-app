@@ -13,7 +13,7 @@ export interface ITodo {
     title: string
     description: string | null
     list: IList | null
-    dueDate: Date | null
+    dueDate: string | null
     tags: ITag[]
     subtasks: ISubtask[]
     completed: boolean
