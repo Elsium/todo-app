@@ -2,7 +2,7 @@ import React from 'react'
 
 interface PropsType {
     title: string
-    count: number
+    count?: number
 }
 
 const TableTitle = ({title, count}: PropsType) => {
