@@ -64,7 +64,6 @@ const MenuTasks = () => {
                     <StickyNote2Icon/>
                     <p>Sticky Wall</p>
                 </div>
-                <p>{stickers?.length}</p>
             </button>
         </div>
     )
