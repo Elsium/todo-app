@@ -14,11 +14,11 @@ export interface ISticker {
 
 export const addStickerAndUpload = createAsyncThunk(
     'stickers/addStickerAndUpload',
-    async ({title, accessToken}: {title: string, accessToken: string}, {getState, dispatch}) => {
+    async ({title, description, accessToken}: {title: string, description: string | null, accessToken: string}, {getState, dispatch}) => {
         const newSticker: ISticker = {
             id: Date.now(),
             title,
-            description: null
+            description
         }
         dispatch(addSticker(newSticker))
 

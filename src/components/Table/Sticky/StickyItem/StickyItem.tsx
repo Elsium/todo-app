@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close'
 import s from './StickyItem.module.css'
 import {deleteStickerAndUpload} from '@/redux/Features/stickersSlice'
 import {useSession} from 'next-auth/react'
+import {useDispatch} from 'react-redux'
+import {AppDispatch} from '@/redux/store'
 
 interface PropsType {
     id: number
@@ -15,8 +17,9 @@ interface PropsType {
 const StickyItem = ({id, title, description}: PropsType) => {
     const {data: session} = useSession()
     const accessToken = session?.accessToken
+    const dispatch = useDispatch<AppDispatch>()
     const deleteSticky = () => {
-        if (accessToken) deleteStickerAndUpload({id, accessToken})
+        if (accessToken) dispatch(deleteStickerAndUpload({id, accessToken}))
     }
 
     return (
