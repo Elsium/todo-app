@@ -27,7 +27,7 @@ const TodoItem = ({todo, openTask, length, index}: PropsType) => {
 
     return (
         <>
-            <li className='flex justify-between w-full hover:bg-ground rounded'>
+            <li className='flex justify-between w-full transition-colors duration-300 ease-linear hover:bg-ground rounded'>
                 <div className='flex justify-start items-start w-full'>
                     <div className='flex'>
                         <Checkbox checked={todo.completed} onChange={() => dispatch(toggleTodoCompletedAndUpload({id: todo.id, accessToken}))}/>

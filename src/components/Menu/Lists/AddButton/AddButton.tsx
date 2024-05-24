@@ -45,7 +45,7 @@ const AddButton = () => {
         <>
             {isAdd
                 ?
-                <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] relative">
+                <form onSubmit={formik.handleSubmit} className="w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] relative ">
                     <div style={{background: color}} className="min-w-[20px] h-[20px] rounded"
                         onClick={() => setOpenPicker(!openPicker)}/>
                     {openPicker && <ChromePicker className="absolute top-[30px] left-[5px]" color={color} onChangeComplete={(picker) => {
@@ -60,7 +60,7 @@ const AddButton = () => {
                     <button type='button' onClick={() => onCancel()}><CloseIcon className='text-xl'/></button>
                 </form>
                 : <button onClick={() => setIsAdd(true)}
-                    className="w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] hover:bg-listHover">
+                    className="w-full flex items-center justify-start py-[5px] px-[10px] rounded gap-[10px] transition-colors duration-300 ease-linear hover:bg-listHover">
                     <AddIcon/>
                     <p>Add New List</p>
                 </button>

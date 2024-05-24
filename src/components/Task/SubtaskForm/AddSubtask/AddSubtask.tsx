@@ -33,8 +33,8 @@ const AddSubtask = ({todoId}: PropsType) => {
         formikSubtask.handleSubmit(e)
     }
     return (
-        <form onSubmit={(e) => handleSubmit(e)} className='pb-[10px] mb-[10px] flex items-center gap-[20px] border-b border-gray-300 rounded'>
-            <button type='submit'>
+        <form onSubmit={(e) => handleSubmit(e)} className='pb-[10px] mb-[10px] flex items-center gap-[20px] border-b border-gray-300 rounded hover:border-gray-500 focus:border-blue-500 focus:border-2'>
+            <button type='submit' className='rounded-full flex justify-center items-center transition-colors duration-300 ease-linear hover:text-blue-400 hover:bg-gray-200 active:bg-gray-300'>
                 <AddIcon/>
             </button>
             <input

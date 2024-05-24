@@ -30,11 +30,11 @@ const TaskAdditional = ({todo, closeTask, formikSubmit}: PropsType) => {
     return (
         <div className='flex justify-between items-center'>
             <button className='border-[#cbcbcb] w-[45%] h-[50px] text-base border font-jost font-bold
-            rounded-xl self-center hover:brightness-75 active:brightness-90 select-none' onClick={() => onDelete(todo.id)}>
+            rounded-xl self-center hover:brightness-75 active:brightness-90 select-none transition-all duration-300 ease-linear' onClick={() => onDelete(todo.id)}>
                 Delete task
             </button>
             <button className='bg-[#fed439] w-[45%] h-[50px] text-base font-jost font-bold rounded-xl
-            self-center hover:brightness-75 active:brightness-90 select-none' onClick={(e) => onChange(e)}>
+            self-center hover:brightness-75 active:brightness-90 select-none transition-all duration-300 ease-linear' onClick={(e) => onChange(e)}>
                 Save changes
             </button>
         </div>

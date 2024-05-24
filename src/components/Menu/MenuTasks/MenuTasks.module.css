@@ -1,5 +1,5 @@
 .btn {
-    @apply w-full flex items-center justify-between py-[5px] px-[10px] rounded
+    @apply w-full flex items-center justify-between py-[5px] px-[10px] rounded transition-colors duration-300 ease-linear
 }
 
 .btn:hover {
@@ -15,5 +15,5 @@
 }
 
 .btn > p {
-    @apply w-[30px] text-xs p-[1px] bg-listHover rounded
+    @apply w-[30px] text-xs p-[1px] bg-listHover rounded transition-colors duration-300 ease-linear
 }

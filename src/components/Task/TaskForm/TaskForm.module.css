@@ -1,11 +1,11 @@
 .title {
-    @apply rounded border border-gray-300 p-[10px] w-full bg-inherit focus:outline-none placeholder:select-none overflow-auto;
+    @apply box-border rounded border border-gray-300 p-[10px] w-full bg-inherit focus:outline-none placeholder:select-none overflow-auto hover:border-gray-500 focus:border-blue-500 focus:border-2;
 }
 
 .title::-webkit-scrollbar { width: 0; }
 
 .optional {
-    @apply rounded border border-gray-300 p-[10px] w-3/4 bg-inherit focus:outline-none placeholder:select-none;
+    @apply rounded border border-gray-300 p-[10px] w-3/4 bg-inherit focus:outline-none placeholder:select-none hover:border-gray-500 focus:border-blue-500 focus:border-2;
 }
 
 .select {
