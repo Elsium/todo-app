@@ -12,6 +12,7 @@ import {useFormik} from 'formik'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
+import useWindowWidth from '@/util/useWindowWidth'
 
 interface PropsType {
     todo: ITodo
@@ -44,9 +45,14 @@ const Task = ({todo, closeTask}: PropsType) => {
         }
     })
 
+    const width = useWindowWidth()
+    let taskClasses: string
+    if (width && width <= 768) taskClasses = 'fixed inset-0 z-40 w-screen flex flex-col justify-between p-[20px] bg-ground rounded-xl font-quicksand'
+    else taskClasses = 'flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <div key={todo.id} className='flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'>
+            <div key={todo.id} className={taskClasses}>
                 <div className='w-full flex flex-col gap-[20px]'>
                     <Title title={'Task:'} Icon={CloseIcon} onClick={() => closeTask()}/>
                     <TaskForm formikTodo={formikTodo}/>

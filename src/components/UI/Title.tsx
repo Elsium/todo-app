@@ -9,8 +9,8 @@ interface ComponentProps {
 
 const Title: React.FC<ComponentProps> = ({title, Icon, onClick}) => {
     return (
-        <div className='flex justify-between select-none'>
-            <p className='font-poppins font-bold text-3xl'>{title}</p>
+        <div className='flex justify-between select-none items-center'>
+            <p className='font-poppins font-bold text-xl md:text-3xl'>{title}</p>
             {Icon && onClick && <button onClick={() => onClick(false)}>
                 <Icon style={{fontSize: '2rem'}} className='text-[#7c7c7c]'/>
             </button>}

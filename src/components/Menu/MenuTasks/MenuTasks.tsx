@@ -15,7 +15,6 @@ const MenuTasks = () => {
     const searchParams = useSearchParams()
 
     const todos = useSelector((state: RootState) => state.todoData.todos)
-    const stickers = useSelector((state: RootState) => state.stickerData.stickers)
 
     const createQueryString = useCallback(
         (name: string, value: string) => {
