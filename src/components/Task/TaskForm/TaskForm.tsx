@@ -27,7 +27,7 @@ const TaskForm = ({formikTodo}: PropsType) => {
     const tags = useSelector((state: RootState) => state.tagData.tags)
 
     return (
-        <form onSubmit={formikTodo.handleSubmit} className='flex flex-col gap-[10px]'>
+        <form onSubmit={formikTodo.handleSubmit} className='flex flex-col gap-[5px] md:gap-[10px]'>
             <input
                 type='text' name='title' onChange={formikTodo.handleChange}
                 value={formikTodo.values.title} placeholder='Title' required className={style.title}/>

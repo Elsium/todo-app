@@ -25,7 +25,7 @@ export default function Work() {
         <SessionProvider>
             <Session>
                 <Initial>
-                    <main className="flex px-[40px] py-[20px] min-h-screen gap-[20px]">
+                    <main className="flex flex-col px-[10px] py-[5px] min-h-screen md:gap-[20px] md:flex-row md:px-[40px] md:py-[20px]">
                         <Menu/>
                         <Table openTask={openTask}/>
                         {task && <Task todo={task} closeTask={closeTask}/>}

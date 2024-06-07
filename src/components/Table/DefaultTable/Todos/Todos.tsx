@@ -14,7 +14,7 @@ interface PropsType {
 const Todos = ({todos, openTask}: PropsType) => {
     return (
         <OverlayScrollbarsComponent className='my-[20px]'>
-            <ol className='flex flex-col gap-[10px] max-h-[700px] pr-[10px]'>
+            <ol className='flex flex-col gap-[5px] md:gap-[10px] max-h-[500px] md:max-h-[700px] pr-[10px]'>
                 {todos?.map((todo, index) => <TodoItem key={todo.id} index={index} length={todos.length} todo={todo} openTask={openTask}/>)}
             </ol>
         </OverlayScrollbarsComponent>

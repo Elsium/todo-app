@@ -19,10 +19,10 @@ const Menu = () => {
 
     const width = useWindowWidth()
     let menuClasses: string
-    if (width && width <= 768) menuClasses = show ? 'fixed inset-0 z-40 w-screen flex flex-col justify-between p-[20px] bg-ground rounded-xl font-quicksand' : 'hidden'
+    if (width && width <= 768) menuClasses = show ? 'fixed inset-0 z-40 w-screen flex flex-col justify-between h-screen p-[20px] bg-ground rounded-xl font-quicksand' : 'hidden'
     else menuClasses = show ? 'flex flex-col justify-between min-w-[325px] p-[20px] bg-ground rounded-xl font-quicksand' : 'hidden'
 
-    if(!show) return <button className='self-start flex items-end h-[50px] mr-[40px]' onClick={() => toggleMenu(true)}><MenuIcon style={{fontSize: '2rem'}} className='text-[#7c7c7c]'/></button>
+    if(!show) return <button className='self-start flex items-end h-[50px] ml-[10px] md:mr-[40px]' onClick={() => toggleMenu(true)}><MenuIcon style={{fontSize: '2rem'}} className='text-[#7c7c7c]'/></button>
 
     return (
         <nav className={menuClasses}>

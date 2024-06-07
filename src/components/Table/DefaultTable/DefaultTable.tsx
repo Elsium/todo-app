@@ -58,7 +58,7 @@ const DefaultTable = ({openTask}: PropsType) => {
     }
 
     return (
-        <section className='w-full flex flex-col justify-start p-[30px] select-none'>
+        <section className='w-full flex flex-col justify-start px-[10px] py-[10px] md:p-[30px] select-none'>
             <TableTitle title={title} count={todos?.filter(todo => !todo.completed).length}/>
             <AddTodoForm completedCollapsed={completedCollapsed} areCompletedCollapsed={areCompletedCollapsed}/>
             <Todos todos={todos} openTask={openTask}/>

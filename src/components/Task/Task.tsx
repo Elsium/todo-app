@@ -47,7 +47,7 @@ const Task = ({todo, closeTask}: PropsType) => {
 
     const width = useWindowWidth()
     let taskClasses: string
-    if (width && width <= 768) taskClasses = 'fixed inset-0 z-40 w-screen flex flex-col justify-between p-[20px] bg-ground rounded-xl font-quicksand'
+    if (width && width <= 768) taskClasses = 'fixed inset-0 z-40 w-screen flex flex-col gap-[20px] p-[20px] bg-ground rounded-xl font-quicksand'
     else taskClasses = 'flex flex-col justify-between min-w-[500px] p-[20px] bg-ground rounded-xl font-quicksand'
 
     return (

@@ -42,8 +42,8 @@ const AddTodoForm = ({completedCollapsed, areCompletedCollapsed}: PropsType) => 
     return (
         <div className='mt-[20px] flex justify-between items-center border border-gray-300 rounded px-2'>
             <form onSubmit={formik.handleSubmit} className="flex items-center w-[80%]">
-                <button type="submit" className=" outline-none focus:text-[#fed439]">
-                    <AddIcon/>
+                <button type="submit" className="outline-none focus:text-[#fed439] flex justify-center items-center">
+                    <AddIcon className='text-lg'/>
                 </button>
                 <input
                     type="text"
@@ -51,12 +51,12 @@ const AddTodoForm = ({completedCollapsed, areCompletedCollapsed}: PropsType) => 
                     onChange={formik.handleChange}
                     value={formik.values.title}
                     placeholder="Add a new task"
-                    className="flex-1 p-2 outline-none"
+                    className="flex-1 p-2 outline-none text-sm md:text-base"
                 />
             </form>
-            <label className='flex items-center gap-[10px] border-l border-gray-300'>
+            <label className='flex items-center gap-[2px] md:gap-[10px] border-l border-gray-300'>
                 <Checkbox size="small" value={!areCompletedCollapsed} onChange={completedCollapsed}/>
-                <p className='font-poppins cursor-pointer'>Completed</p>
+                <p className='font-poppins cursor-pointer text-xs md:text-base'>Completed</p>
             </label>
         </div>
     )
